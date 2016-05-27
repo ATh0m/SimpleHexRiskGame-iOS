@@ -9,43 +9,53 @@
 import Foundation
 import SpriteKit
 
-class Hex {
-    var force: UInt = 0
+class Hex: SKShapeNode {
+    
+    var force: UInt = 0 {
+        didSet {
+            label.text = String(force)
+        }
+    }
+    var label: SKLabelNode! = nil
     // var owner: Player?
     
-    var position: CGPoint
-    var size: CGFloat = 0
-    
-    var shape: SKShapeNode
-    
-    init(position: CGPoint, size: CGFloat) {
-        self.position = position
-        self.size = size
+    convenience init(position: CGPoint, size: CGFloat) {
+        
+        let vertices = Hex.verticesList(position, size: size)
+        
+        self.init()
+        self.init(points: vertices, count: 7)
         
         self.force = 0
         // self.owner = nil
         
-        let x = position.x
-        let y = position.y
+        label = SKLabelNode(fontNamed: "Arial")
+        label.text = String(self.force)
+        label.fontSize = 20
+        label.position = position
         
-        let points = UnsafeMutablePointer<CGPoint>.alloc(7)
-        points[0] = CGPoint(x: x - size, y: y + size / 2.0)
-        points[1] = CGPoint(x: x - size, y: y - size / 2.0)
-        points[2] = CGPoint(x: x, y: y - size)
-        points[3] = CGPoint(x: x + size, y: y - size / 2.0)
-        points[4] = CGPoint(x: x + size, y: y + size / 2.0)
-        points[5] = CGPoint(x: x, y: y + size)
-        points[6] = CGPoint(x: x - size, y: y + size / 2.0)
+        label.verticalAlignmentMode = .Center
+        label.horizontalAlignmentMode = .Center
         
-        self.shape = SKShapeNode(points: points, count: 7)
-    }
-    
-    func display() {
+        self.addChild(label)
         
     }
     
-    func displayFilled() {
+    static func verticesList(center: CGPoint, size: CGFloat) -> UnsafeMutablePointer<CGPoint> {
         
+        let x = center.x
+        let y = center.y
+        
+        let vertices = UnsafeMutablePointer<CGPoint>.alloc(7)
+        vertices[0] = CGPoint(x: x - size, y: y + size / 2.0)
+        vertices[1] = CGPoint(x: x - size, y: y - size / 2.0)
+        vertices[2] = CGPoint(x: x, y: y - size)
+        vertices[3] = CGPoint(x: x + size, y: y - size / 2.0)
+        vertices[4] = CGPoint(x: x + size, y: y + size / 2.0)
+        vertices[5] = CGPoint(x: x, y: y + size)
+        vertices[6] = CGPoint(x: x - size, y: y + size / 2.0)
+        
+        return vertices
     }
     
 }

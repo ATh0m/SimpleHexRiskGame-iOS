@@ -31,22 +31,11 @@ class GameScene: SKScene {
         
         let test = Hex(position: CGPointMake(200, 200), size: 50)
         
-        test.shape.fillColor = SKColor.redColor()
-        test.shape.strokeColor = SKColor.blueColor()
-        test.shape.lineWidth = 5
+        test.fillColor = SKColor.redColor()
+        test.strokeColor = SKColor.blueColor()
+        test.lineWidth = 5
         
-        let myLabel = SKLabelNode(fontNamed:"Ariel")
-        myLabel.text = "Test"
-        myLabel.fontSize = 12
-        
-        myLabel.verticalAlignmentMode = .Center
-        myLabel.horizontalAlignmentMode = .Center
-        
-        myLabel.position = test.position
-        
-        test.shape.addChild(myLabel)
-        
-        self.addChild(test.shape)
+        self.addChild(test)
         
         
     }
@@ -56,8 +45,14 @@ class GameScene: SKScene {
         
         for touch in touches {
             let location = touch.locationInNode(self)
-            print(location)
+            let node = nodeAtPoint(location)
+            
+            if let hex = node as? Hex {
+                hex.force += 1
+            }
+        
         }
+        
     }
    
     override func update(currentTime: CFTimeInterval) {
