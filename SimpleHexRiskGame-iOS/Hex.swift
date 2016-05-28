@@ -16,7 +16,10 @@ class Hex: SKShapeNode {
             label.text = String(force)
         }
     }
+    
     var label: SKLabelNode! = nil
+    var size: CGSize = CGSizeZero
+    
     // var owner: Player?
     
     convenience init(position: CGPoint, size: CGFloat) {
@@ -25,6 +28,12 @@ class Hex: SKShapeNode {
         
         self.init()
         self.init(points: vertices, count: 7)
+        
+        self.lineWidth = 5
+        self.fillColor = SKColor.redColor()
+        self.strokeColor = SKColor.blueColor()
+        
+        self.size = CGSizeMake(size * 2, size * 1.5)
         
         self.force = 0
         // self.owner = nil

@@ -29,14 +29,7 @@ class GameScene: SKScene {
         self.addChild(myObject)
         */
         
-        let test = Hex(position: CGPointMake(200, 200), size: 50)
-        
-        test.fillColor = SKColor.redColor()
-        test.strokeColor = SKColor.blueColor()
-        test.lineWidth = 5
-        
-        self.addChild(test)
-        
+        _ = MapGenerator.generateMap(CGSizeMake(10, 10), rate: 0.5)
         
     }
     
@@ -47,6 +40,7 @@ class GameScene: SKScene {
             let location = touch.locationInNode(self)
             let node = nodeAtPoint(location)
             
+            // FIXME - naprawić naciskanie na ilość punktów
             if let hex = node as? Hex {
                 hex.force += 1
             }
