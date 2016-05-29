@@ -26,6 +26,8 @@ class Player {
         self.name = name
         self.tileColor = tileColor
         self.actionColor = actionColor
+        
+        self.active = true
     }
 }
 

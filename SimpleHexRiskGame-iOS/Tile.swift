@@ -12,8 +12,13 @@ import SpriteKit
 class Tile {
     
     var position: CGPoint = CGPointZero
+    var actionable: Bool = false
     
-    var owner: AnyObject? = nil
+    var owner: Player? = nil {
+        didSet {
+            shape.fillColor = owner!.tileColor
+        }
+    }
     var force: UInt = 0 {
         didSet {
             shape.label.text = String(force)
@@ -35,14 +40,14 @@ class Tile {
             
             self.tile = tile
             
-            self.fillColor = SKColor.blueColor()
-            self.strokeColor = SKColor.redColor()
-            self.lineWidth = 4
+            self.fillColor = SKColor.grayColor()
+            self.strokeColor = SKColor.clearColor()
+            self.lineWidth = 3
             
             label = SKLabelNode(fontNamed: "Arial")
             label.text = String(tile.force)
             label.fontSize = 20
-            label.position = CGPointMake(200 + tile.position.x * 30, 200 + tile.position.y * 30)
+            label.position = CGPointMake(200 + tile.position.x * 31, 200 + tile.position.y * 31)
             
             label.verticalAlignmentMode = .Center
             label.horizontalAlignmentMode = .Center
@@ -53,8 +58,8 @@ class Tile {
         
         static func vertices(center: CGPoint, size: CGFloat) -> UnsafeMutablePointer<CGPoint> {
             
-            let x = 200 + center.x * size
-            let y = 200 + center.y * size
+            let x = 200 + center.x * (size + 1)
+            let y = 200 + center.y * (size + 1)
             
             let vertices = UnsafeMutablePointer<CGPoint>.alloc(7)
             vertices[0] = CGPoint(x: x - size, y: y + size / 2.0)

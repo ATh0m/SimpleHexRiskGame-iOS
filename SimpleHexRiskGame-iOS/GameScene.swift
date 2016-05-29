@@ -132,27 +132,144 @@ class GameScene: SKScene {
                 switch condition {
                 case .Pre: break
                 case .In:
+                    
                     if let tileShape = node as? Tile.TileShape {
-                        tileShape.tile.force += 1
                         
-                        for tile in tileShape.tile.neighbours {
-                            tile.shape.fillColor = SKColor.greenColor()
+                        let player = players[currentPlayerIndex]
+                        
+                        if tileShape.tile.owner == nil {
+                            tileShape.tile.owner = player
+                            tileShape.tile.force = 3
+                            player.tiles.append(tileShape.tile)
+                            
+                            state = .Start(.Post)
                         }
                     }
+                    
                 case .Post: break
                 }
                 
             case .Reinforcement(let condition):
                 switch condition {
                 case .Pre: break
-                case .In: break
+                case .In:
+                    
+                    if let tileShape = node as? Tile.TileShape {
+                        let player = players[currentPlayerIndex]
+                        
+                        if player is Human {
+                            if tileShape.tile.owner === player {
+                                tileShape.tile.force += 1
+                                player.reinforcements -= 1
+                            }
+                            
+                            if player.reinforcements <= 0 {
+                                state = .Reinforcement(.Post)
+                            }
+                        }
+                    }
+                    
                 case .Post: break
                 }
                 
             case .Move(let condition):
                 switch condition {
                 case .Pre: break
-                case .In: break
+                case .In:
+                    if let tileShape = node as? Tile.TileShape {
+                        
+                        if tileShape.tile.actionable {
+                        
+                            let player = players[currentPlayerIndex]
+                            
+                            if tileShape.tile.owner === player {
+                                
+                                tileShape.tile.force += 2
+                                
+                            } else if tileShape.tile.owner == nil {
+                                
+                                var attackPower:UInt = 0
+                                
+                                for neighbourTile in tileShape.tile.neighbours {
+                                    if neighbourTile.owner === player {
+                                        attackPower += neighbourTile.force / 2
+                                    }
+                                }
+                                
+                                if attackPower <= 0 { break }
+                                
+                                tileShape.tile.owner = player
+                                tileShape.tile.force = attackPower
+                                
+                                player.tiles.append(tileShape.tile)
+                                
+                            } else if !(tileShape.tile.owner === player) {
+                                
+                                var attackPower: UInt = 0
+                                
+                                for neighbourTile in tileShape.tile.neighbours {
+                                    if neighbourTile.owner === player {
+                                        attackPower += neighbourTile.force / 2
+                                        neighbourTile.force -= neighbourTile.force / 2
+                                    }
+                                }
+                                
+                                var defensePower = tileShape.tile.force
+                                
+                                srandom(UInt32(time(nil)))
+                                
+                                while attackPower > 0 && defensePower > 0 {
+                                    let attackDicesAmount = min(attackPower, 3)
+                                    let defenseDicesAmount = min(defensePower, 2)
+                                    
+                                    var attackDices = [Int]()
+                                    var defenseDices = [Int]()
+                                    
+                                    for _ in 0..<attackDicesAmount {
+                                        attackDices.append(1 + random() % 6)
+                                    }
+                                    
+                                    for _ in 0..<defenseDicesAmount {
+                                        defenseDices.append(1 + random() % 6)
+                                    }
+                                    
+                                    attackDices = attackDices.sort({$0 > $1})
+                                    defenseDices = defenseDices.sort({$0 > $1})
+                                    
+                                    for i in 0..<Int(min(attackDicesAmount, defenseDicesAmount)) {
+                                        if attackDices[i] > defenseDices[i] {
+                                            defensePower -= 1
+                                        } else {
+                                            attackPower -= 1
+                                        }
+                                    }
+                                }
+                                
+                                if attackPower > 0 {
+                                    
+                                    let opponent: Player! = tileShape.tile.owner
+                                    
+                                    let index = opponent.tiles.indexOf({$0 === tileShape.tile})
+                                    opponent.tiles.removeAtIndex(index!)
+                                    
+                                    player.tiles.append(tileShape.tile)
+                                    tileShape.tile.owner = player
+                                    tileShape.tile.force = attackPower
+                                    
+                                    if opponent.tiles.count == 0 {
+                                        opponent.active = false
+                                    }
+                                    
+                                } else {
+                                    tileShape.tile.force = defensePower
+                                }
+                                
+                            } else { break }
+                            
+                            
+                            state = .Move(.Post)
+                        }
+                    }
                 case .Post: break
                 }
                 
@@ -212,27 +329,178 @@ class GameScene: SKScene {
             switch condition {
             case .Pre:
                 
-                message.text = "Gracz \(players[currentPlayerIndex].name) wybierz swoje startowe pole"
+                let player = players[currentPlayerIndex]
+                
+                if player.tiles.count > 0 {
+                    state = .Reinforcement(.Pre)
+                    break
+                }
+                
+                if player is AI {
+                    
+                    srandom(UInt32(time(nil)))
+                    
+                    var tile = board.tiles[random() % board.tiles.count]
+                    
+                    while tile.owner != nil {
+                        tile = board.tiles[random() % board.tiles.count]
+                    }
+                    
+                    tile.owner = player
+                    tile.force = 3
+                    player.tiles.append(tile)
+                    
+                    state = .Start(.Post)
+                    break
+                }
+                
+                message.text = "Gracz \(player.name) wybierz swoje startowe pole"
                 message.fontColor = players[currentPlayerIndex].tileColor
                 messageDescription.text = "Wybierz dowolne wolne pole jako twój startowy teren"
                 
+                for tile in board.tiles {
+                    if tile.owner == nil {
+                        tile.shape.strokeColor = player.actionColor
+                        tile.actionable = true
+                    }
+                }
+                
                 state = .Start(.In)
+                
             case .In: break
-            case .Post: break
+                
+            case .Post:
+                
+                for tile in board.tiles {
+                    tile.shape.strokeColor = SKColor.clearColor()
+                    tile.actionable = false
+                }
+                
+                currentPlayerIndex = (currentPlayerIndex + 1) % players.count
+                state = .Start(.Pre)
             }
             
         case .Reinforcement(let condition):
             switch condition {
-            case .Pre: break
-            case .In: break
-            case .Post: break
+            case .Pre:
+                let player = players[currentPlayerIndex]
+                
+                player.reinforcements = UInt(max(2, player.tiles.count / 3))
+                
+                message.text = "Gracz \(player.name) rozstaw swoje siły. Pozostało \(player.reinforcements)"
+                message.fontColor = players[currentPlayerIndex].tileColor
+                messageDescription.text = "Wybierz swoje pole, które chcesz wzmocnić. Kliknięcie prawym przyciskiem dodaje wszystkie jednostki"
+                
+                if player is Human {
+                    for tile in player.tiles {
+                        tile.shape.strokeColor = player.actionColor
+                        tile.actionable = true
+                    }
+                }
+                
+                if player is AI {
+                    
+                    var tilesAdjacentNeutral: [Tile] = [Tile]()
+                    var tilesAdjacentEnemies: [Tile] = [Tile]()
+                    
+                    for tile in player.tiles {
+                        if tile.neighbours.contains({$0.owner == nil}) {
+                            tilesAdjacentNeutral.append(tile)
+                        }
+                        
+                        if tile.neighbours.contains({!($0.owner === player || $0.owner == nil)}) {
+                            tilesAdjacentEnemies.append(tile)
+                        }
+                    }
+                    
+                    srand48(time(nil))
+                    srandom(UInt32(time(nil)))
+                    
+                    var tile: Tile
+                    
+                    while player.reinforcements > 0 {
+                        if tilesAdjacentEnemies.count > 0 && (drand48() < 0.75 || tilesAdjacentNeutral.count == 0) {
+                            tile = tilesAdjacentEnemies[random() % tilesAdjacentEnemies.count]
+                        } else if tilesAdjacentNeutral.count > 0 {
+                            tile = tilesAdjacentNeutral[random() % tilesAdjacentNeutral.count]
+                        } else {
+                            tile = player.tiles[random() % player.tiles.count]
+                        }
+                        
+                        tile.force += 1
+                        player.reinforcements -= 1
+                        
+                    }
+                    
+                    state = .Reinforcement(.Post)
+                    break
+                }
+                
+                state = .Reinforcement(.In)
+                
+            case .In:
+                
+                let player = players[currentPlayerIndex]
+                
+                message.text = "Gracz \(player.name) rozstaw swoje siły. Pozostało \(player.reinforcements)"
+                
+            case .Post:
+                
+                let player = players[currentPlayerIndex]
+                
+                for tile in player.tiles {
+                    tile.shape.strokeColor = SKColor.clearColor()
+                    tile.actionable = false
+                }
+                
+                state = .Move(.Pre)
             }
             
         case .Move(let condition):
             switch condition {
-            case .Pre: break
+            case .Pre:
+                let player = players[currentPlayerIndex]
+                
+                message.text = "Gracz \(player.name) wykonaj ruch"
+                message.fontColor = players[currentPlayerIndex].tileColor
+                messageDescription.text = "Dołącz neutralne pole, zaatakuj przeciwnika lub wzmocnij swój teren 2 jednostkami"
+                
+                if player is Human {
+                    for tile in player.tiles {
+                        tile.shape.strokeColor = player.actionColor
+                        tile.actionable = true
+                        for neighbourTile in tile.neighbours {
+                            neighbourTile.shape.strokeColor = player.actionColor
+                            neighbourTile.actionable = true
+                        }
+                    }
+                }
+                
+                if player is AI {
+                    state = .Move(.Post)
+                    break
+                }
+                
+                state = .Move(.In)
             case .In: break
-            case .Post: break
+            case .Post:
+                
+                let player = players[currentPlayerIndex]
+                
+                for tile in player.tiles {
+                    tile.shape.strokeColor = SKColor.clearColor()
+                    tile.actionable = false
+                    for neighbourTile in tile.neighbours {
+                        neighbourTile.shape.strokeColor = SKColor.clearColor()
+                        neighbourTile.actionable = false
+                    }
+                }
+                
+                repeat {
+                    currentPlayerIndex = (currentPlayerIndex + 1) % players.count
+                } while !players[currentPlayerIndex].active
+                
+                state = .Reinforcement(.Pre)
             }
             
         case .Win(let condition):
