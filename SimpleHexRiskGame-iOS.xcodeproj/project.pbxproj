@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F0ADB8C1CFA67B300E6378E /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0ADB8B1CFA67B300E6378E /* Helper.swift */; };
+		9F0ADB8F1CFAA82200E6378E /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0ADB8E1CFAA82200E6378E /* Tile.swift */; };
+		9F0ADB921CFAA9F400E6378E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0ADB911CFAA9F400E6378E /* Player.swift */; };
 		9FA7434E1CF89DD800C773A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7434D1CF89DD800C773A2 /* AppDelegate.swift */; };
 		9FA743521CF89DD800C773A2 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA743511CF89DD800C773A2 /* GameScene.swift */; };
 		9FA743541CF89DD800C773A2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA743531CF89DD800C773A2 /* GameViewController.swift */; };
@@ -16,7 +19,6 @@
 		9FA743671CF89DD800C773A2 /* SimpleHexRiskGame_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA743661CF89DD800C773A2 /* SimpleHexRiskGame_iOSTests.swift */; };
 		9FA743721CF89DD800C773A2 /* SimpleHexRiskGame_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA743711CF89DD800C773A2 /* SimpleHexRiskGame_iOSUITests.swift */; };
 		9FA743821CF8C6C000C773A2 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA743811CF8C6C000C773A2 /* Board.swift */; };
-		9FA743841CF8D8EE00C773A2 /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA743831CF8D8EE00C773A2 /* Hex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F0ADB8B1CFA67B300E6378E /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		9F0ADB8E1CFAA82200E6378E /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		9F0ADB911CFAA9F400E6378E /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		9FA7434A1CF89DD800C773A2 /* SimpleHexRiskGame-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimpleHexRiskGame-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA7434D1CF89DD800C773A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FA743511CF89DD800C773A2 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -52,7 +57,6 @@
 		9FA743711CF89DD800C773A2 /* SimpleHexRiskGame_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHexRiskGame_iOSUITests.swift; sourceTree = "<group>"; };
 		9FA743731CF89DD800C773A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FA743811CF8C6C000C773A2 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
-		9FA743831CF8D8EE00C773A2 /* Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F0ADB901CFAA8B800E6378E /* Additional files */ = {
+			isa = PBXGroup;
+			children = (
+				9FA7434D1CF89DD800C773A2 /* AppDelegate.swift */,
+				9FA743531CF89DD800C773A2 /* GameViewController.swift */,
+				9FA743551CF89DD800C773A2 /* Main.storyboard */,
+				9FA743581CF89DD800C773A2 /* Assets.xcassets */,
+				9FA7435A1CF89DD800C773A2 /* LaunchScreen.storyboard */,
+				9FA7435D1CF89DD800C773A2 /* Info.plist */,
+			);
+			name = "Additional files";
+			sourceTree = "<group>";
+		};
 		9FA743411CF89DD800C773A2 = {
 			isa = PBXGroup;
 			children = (
@@ -103,15 +120,12 @@
 		9FA7434C1CF89DD800C773A2 /* SimpleHexRiskGame-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				9FA7434D1CF89DD800C773A2 /* AppDelegate.swift */,
 				9FA743511CF89DD800C773A2 /* GameScene.swift */,
-				9FA743831CF8D8EE00C773A2 /* Hex.swift */,
+				9F0ADB8B1CFA67B300E6378E /* Helper.swift */,
+				9F0ADB8E1CFAA82200E6378E /* Tile.swift */,
 				9FA743811CF8C6C000C773A2 /* Board.swift */,
-				9FA743531CF89DD800C773A2 /* GameViewController.swift */,
-				9FA743551CF89DD800C773A2 /* Main.storyboard */,
-				9FA743581CF89DD800C773A2 /* Assets.xcassets */,
-				9FA7435A1CF89DD800C773A2 /* LaunchScreen.storyboard */,
-				9FA7435D1CF89DD800C773A2 /* Info.plist */,
+				9F0ADB911CFAA9F400E6378E /* Player.swift */,
+				9F0ADB901CFAA8B800E6378E /* Additional files */,
 			);
 			path = "SimpleHexRiskGame-iOS";
 			sourceTree = "<group>";
@@ -269,8 +283,10 @@
 				9FA743521CF89DD800C773A2 /* GameScene.swift in Sources */,
 				9FA743541CF89DD800C773A2 /* GameViewController.swift in Sources */,
 				9FA743821CF8C6C000C773A2 /* Board.swift in Sources */,
+				9F0ADB8F1CFAA82200E6378E /* Tile.swift in Sources */,
+				9F0ADB921CFAA9F400E6378E /* Player.swift in Sources */,
 				9FA7434E1CF89DD800C773A2 /* AppDelegate.swift in Sources */,
-				9FA743841CF8D8EE00C773A2 /* Hex.swift in Sources */,
+				9F0ADB8C1CFA67B300E6378E /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +519,7 @@
 				9FA743781CF89DD800C773A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9FA743791CF89DD800C773A2 /* Build configuration list for PBXNativeTarget "SimpleHexRiskGame-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +528,7 @@
 				9FA7437B1CF89DD800C773A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9FA7437C1CF89DD800C773A2 /* Build configuration list for PBXNativeTarget "SimpleHexRiskGame-iOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +537,7 @@
 				9FA7437E1CF89DD800C773A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
