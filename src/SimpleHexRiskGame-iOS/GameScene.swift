@@ -33,7 +33,7 @@ class GameScene: SKScene {
         backgroundColor = SKColor.blackColor()
         state = .Create(.Pre)
         
-        board = Board(minTilesAmount: 10, maxTilesAmount: 20)
+        board = Board(minTilesAmount: 20, maxTilesAmount: 30)
     }
     
     func splashScreen() -> [SKLabelNode] {
@@ -79,7 +79,13 @@ class GameScene: SKScene {
         
         for touch in touches {
             let location = touch.locationInNode(self)
-            let node = nodeAtPoint(location)
+            var node = nodeAtPoint(location)
+            
+            if let node_ = node as? SKLabelNode {
+                if !((node_.name?.hasPrefix("playersAmount: ")) != nil) {
+                    node = node_.parent!
+                }
+            }
             
             switch state {
                 
@@ -304,7 +310,12 @@ class GameScene: SKScene {
             case .Post:
                 self.removeAllChildren()
                 
+                let tileSize: CGFloat = 30
+                let tileTranslation = CGVector(dx: (self.size.width - self.board.size.width * tileSize) / 2.0,
+                                               dy: (self.size.height - self.board.size.height * tileSize - 60) / 2.0 + 60)
+                
                 for tile in board.tiles {
+                    tile.createShape(tileSize, translation: tileTranslation)
                     self.addChild(tile.shape)
                 }
                 

@@ -16,6 +16,13 @@ public func + (left: CGPoint, right: CGVector) -> CGPoint {
     return CGPoint(x: left.x + right.dx, y: left.y + right.dy)
 }
 
+/**
+ * Increments a CGPoint with the value of a CGVector.
+ */
+public func += (inout left: CGPoint, right: CGVector) {
+    left = left + right
+}
+
 
 
 

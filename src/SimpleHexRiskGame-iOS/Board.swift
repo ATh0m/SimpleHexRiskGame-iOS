@@ -14,14 +14,23 @@ class Board {
     var tiles: [Tile] = [Tile]()
     var tilesAmount: UInt = 0
     
+    var size: CGSize = CGSizeZero
+    
     init(minTilesAmount: UInt, maxTilesAmount: UInt) {
         
         let tilesAmount = minTilesAmount + UInt(arc4random()) % (maxTilesAmount - minTilesAmount)
-        generate(tilesAmount, tileDirections: [CGVector(dx: 2, dy: 0), CGVector(dx: 1, dy: 1.5), CGVector(dx: 1, dy: -1.5), CGVector(dx: -2, dy: 0), CGVector(dx: -1, dy: -1.5), CGVector(dx: -1, dy: 1.5)], probability: 0.8)
+        let result = generate(tilesAmount, tileDirections: [CGVector(dx: 2, dy: 0), CGVector(dx: 1, dy: 1.5), CGVector(dx: 1, dy: -1.5), CGVector(dx: -2, dy: 0), CGVector(dx: -1, dy: -1.5), CGVector(dx: -1, dy: 1.5)], probability: 0.8, maxSize: CGSize(width: 18, height: 10))
         
+        size = CGSize(width: result.maxPoint.x - result.minPoint.x, height: result.maxPoint.y - result.minPoint.y)
+        
+        let translation: CGVector = CGVector(dx: 0 - result.minPoint.x, dy: 0 - result.minPoint.y)
+        
+        for tile in tiles {
+            tile.position += translation
+        }
     }
     
-    func generate(tilesAmount: UInt, tileDirections: [CGVector], probability: CGFloat) {
+    func generate(tilesAmount: UInt, tileDirections: [CGVector], probability: CGFloat, maxSize: CGSize) -> (minPoint: CGPoint, maxPoint: CGPoint) {
         
         srand(UInt32(time(nil)))
         srand48(time(nil))
@@ -37,6 +46,9 @@ class Board {
         var index = 0
         var position, newPosition: CGPoint
         
+        var minPoint: CGPoint = CGPointZero
+        var maxPoint: CGPoint = CGPointZero
+        
         while tilesAmount_ > 0 {
             
             position = tiles[index].position
@@ -44,6 +56,13 @@ class Board {
             for direction in tileDirections {
                 
                 newPosition = position + direction
+                
+                let newMinPoint = CGPoint(x: min(minPoint.x, newPosition.x), y: min(minPoint.y, newPosition.y))
+                let newMaxPoint = CGPoint(x: max(maxPoint.x, newPosition.x), y: max(maxPoint.y, newPosition.y))
+                
+                if newMaxPoint.x - newMinPoint.x > maxSize.width || newMaxPoint.y - newMinPoint.y > maxSize.height {
+                    continue
+                }
                 
                 if CGFloat(drand48()) > probability {
                     
@@ -61,6 +80,9 @@ class Board {
                             }
                         }
                         
+                        minPoint = newMinPoint
+                        maxPoint = newMaxPoint
+                        
                         tilesAmount_ -= 1
                         if tilesAmount_ <= 0 {
                             break
@@ -75,6 +97,8 @@ class Board {
             
         }
         
+        
+        return (minPoint, maxPoint)
     }
     
 }

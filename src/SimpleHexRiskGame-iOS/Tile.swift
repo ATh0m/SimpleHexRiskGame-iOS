@@ -32,13 +32,17 @@ class Tile {
     class TileShape: SKShapeNode {
         var tile: Tile! = nil
         var label: SKLabelNode! = nil
+        var center: CGPoint = CGPointZero
         
-        convenience init(tile: Tile) {
+        convenience init(tile: Tile, size: CGFloat, translation: CGVector) {
+            
+            let center: CGPoint = CGPoint(x: tile.position.x * (size + 1), y: tile.position.y * (size + 1)) + translation
             
             self.init()
-            self.init(points: TileShape.vertices(tile.position, size: 30), count: 7)
+            self.init(points: TileShape.vertices(center, size: size), count: 7)
             
             self.tile = tile
+            self.center = center
             
             self.fillColor = SKColor.grayColor()
             self.strokeColor = SKColor.clearColor()
@@ -47,7 +51,7 @@ class Tile {
             label = SKLabelNode(fontNamed: "Arial")
             label.text = String(tile.force)
             label.fontSize = 20
-            label.position = CGPointMake(200 + tile.position.x * 31, 200 + tile.position.y * 31)
+            label.position = center
             
             label.verticalAlignmentMode = .Center
             label.horizontalAlignmentMode = .Center
@@ -58,8 +62,8 @@ class Tile {
         
         static func vertices(center: CGPoint, size: CGFloat) -> UnsafeMutablePointer<CGPoint> {
             
-            let x = 200 + center.x * (size + 1)
-            let y = 200 + center.y * (size + 1)
+            let x = center.x
+            let y = center.y
             
             let vertices = UnsafeMutablePointer<CGPoint>.alloc(7)
             vertices[0] = CGPoint(x: x - size, y: y + size / 2.0)
@@ -76,9 +80,10 @@ class Tile {
     
     init(position: CGPoint) {
         self.position = position
-        
-        shape = TileShape.init(tile: self)
-        
+    }
+    
+    func createShape(size: CGFloat, translation: CGVector) {
+        shape = TileShape.init(tile: self, size: size, translation: translation)
     }
     
 }
