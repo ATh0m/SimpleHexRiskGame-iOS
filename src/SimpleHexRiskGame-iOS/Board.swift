@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 
+
 class Board {
     
     var tiles: [Tile] = [Tile]()
@@ -19,7 +20,7 @@ class Board {
     init(minTilesAmount: UInt, maxTilesAmount: UInt) {
         
         let tilesAmount = minTilesAmount + UInt(arc4random()) % (maxTilesAmount - minTilesAmount)
-        let result = generate(tilesAmount, tileDirections: [CGVector(dx: 2, dy: 0), CGVector(dx: 1, dy: 1.5), CGVector(dx: 1, dy: -1.5), CGVector(dx: -2, dy: 0), CGVector(dx: -1, dy: -1.5), CGVector(dx: -1, dy: 1.5)], probability: 0.8, maxSize: CGSize(width: 18, height: 10))
+        let result = generate(tilesAmount, tileDirections: [CGVector(dx: 2, dy: 0), CGVector(dx: 1, dy: 1.5), CGVector(dx: 1, dy: -1.5), CGVector(dx: -2, dy: 0), CGVector(dx: -1, dy: -1.5), CGVector(dx: -1, dy: 1.5)], probability: 0.95, maxSize: CGSize(width: 20, height: 10))
         
         size = CGSize(width: result.maxPoint.x - result.minPoint.x, height: result.maxPoint.y - result.minPoint.y)
         
