@@ -44,7 +44,7 @@
 		9F0ADB8B1CFA67B300E6378E /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		9F0ADB8E1CFAA82200E6378E /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		9F0ADB911CFAA9F400E6378E /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		9FA7434A1CF89DD800C773A2 /* SimpleHexRiskGame-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimpleHexRiskGame-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FA7434A1CF89DD800C773A2 /* HEXRisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HEXRisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA7434D1CF89DD800C773A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FA743511CF89DD800C773A2 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		9FA743531CF89DD800C773A2 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		9FA7434B1CF89DD800C773A2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9FA7434A1CF89DD800C773A2 /* SimpleHexRiskGame-iOS.app */,
+				9FA7434A1CF89DD800C773A2 /* HEXRisk.app */,
 				9FA743621CF89DD800C773A2 /* SimpleHexRiskGame-iOSTests.xctest */,
 				9FA7436D1CF89DD800C773A2 /* SimpleHexRiskGame-iOSUITests.xctest */,
 			);
@@ -171,7 +171,7 @@
 			);
 			name = "SimpleHexRiskGame-iOS";
 			productName = "SimpleHexRiskGame-iOS";
-			productReference = 9FA7434A1CF89DD800C773A2 /* SimpleHexRiskGame-iOS.app */;
+			productReference = 9FA7434A1CF89DD800C773A2 /* HEXRisk.app */;
 			productType = "com.apple.product-type.application";
 		};
 		9FA743611CF89DD800C773A2 /* SimpleHexRiskGame-iOSTests */ = {
@@ -441,7 +441,7 @@
 				INFOPLIST_FILE = "SimpleHexRiskGame-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "AThom.SimpleHexRiskGame-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HEXRisk;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -455,7 +455,7 @@
 				INFOPLIST_FILE = "SimpleHexRiskGame-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "AThom.SimpleHexRiskGame-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HEXRisk;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;

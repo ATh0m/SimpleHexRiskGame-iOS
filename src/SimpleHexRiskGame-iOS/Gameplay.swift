@@ -45,17 +45,18 @@ class Gameplay {
                                                                     ("Kiedy atakujesz worgie pole siła ataku wynosi połowę siły sąsiadujących przyjaciół", CGVector(dx: 0, dy: 10), 12, ""),
                                                                     ("Mapa i kolejność rozgrywki jest losowa", CGVector(dx: 0, dy: -10), 12, ""),
                                                                     ("Wybierz liczbę graczy, którzy wezmą udział w potyczce.", CGVector(dx: 0, dy: -50), 12, ""),
-                                                                    ("Nad resztą kontrolę przejmie komputer. Powodzenia!", CGVector(dx: 0, dy: -70), 12, ""),
-                                                                    ("0", CGVector(dx: -150, dy: -130), 20, "playersAmount: 0"),
-                                                                    ("1", CGVector(dx: -75, dy: -130), 20, "playersAmount: 1"),
-                                                                    ("2", CGVector(dx: 0, dy: -130), 20, "playersAmount: 2"),
-                                                                    ("3", CGVector(dx: 75, dy: -130), 20, "playersAmount: 3"),
-                                                                    ("4", CGVector(dx: 150, dy: -130), 20, "playersAmount: 4")]
+                                                                    ("Nad resztą kontrolę przejmie komputer. Powodzenia!", CGVector(dx: 0, dy: -70), 12, "")]
+        
+        let choicesConfig: [(String, CGVector, CGFloat, String)] = [ ("0", CGVector(dx: -150, dy: -130), 20, "0"),
+                                                                     ("1", CGVector(dx: -75, dy: -130), 20, "1"),
+                                                                     ("2", CGVector(dx: 0, dy: -130), 20, "2"),
+                                                                     ("3", CGVector(dx: 75, dy: -130), 20, "3"),
+                                                                     ("4", CGVector(dx: 150, dy: -130), 20, "4")]
         
         var labels: [SKLabelNode] = [SKLabelNode]()
         
         for (text, translation, fontSize, name) in labelsConfig {
-            let label = SKLabelNode.init(fontNamed: "Helvetica Neue")
+            let label = SKLabelNode(fontNamed: "Helvetica Neue")
             label.fontColor = SKColor(red: 128/255.0, green: 128/255.0, blue: 128/255.0, alpha: 1)
             
             label.name = name
@@ -73,48 +74,66 @@ class Gameplay {
             gameScene.addChild(label)
         }
         
+        for (text, translation, fontSize, name) in choicesConfig {
+            let box = SKShapeNode(rectOfSize: CGSize(width: 50, height: 50))
+            box.position = center + translation
+            box.lineWidth = 0
+            box.fillColor = SKColor.clearColor()
+            box.name = name
+            gameScene.addChild(box)
+            
+            let label = SKLabelNode(fontNamed: "Helvetica Neue")
+            label.fontColor = SKColor(red: 128/255.0, green: 128/255.0, blue: 128/255.0, alpha: 1)
+            label.text = text
+            label.fontSize = fontSize
+            label.position = CGPointZero
+            
+            label.verticalAlignmentMode = .Center
+            label.horizontalAlignmentMode = .Center
+            
+            box.addChild(label)
+        }
+        
         return true
     }
     
     func actionCreateIn(nodes: [SKNode]) -> Bool {
         
         for node in nodes {
-            if let label = node as? SKLabelNode {
-                if ((label.name?.hasPrefix("playersAmount: ")) != nil) {
-                    if let playersAmount: Int = Int(label.text!) {
-                        
-                        players.removeAll()
-                        
-                        if playersAmount >= 1 {
-                            players.append(Human(name: "Player1", tileColor: SKColor.redColor(), actionColor: SKColor.redColor(), game: self))
-                        } else {
-                            players.append(AI(name: "Player1", tileColor: SKColor.redColor(), actionColor: SKColor.redColor(), game: self))
-                        }
-                        
-                        if playersAmount >= 2 {
-                            players.append(Human(name: "Player2", tileColor: SKColor.blueColor(), actionColor: SKColor.blueColor(), game: self))
-                        } else {
-                            players.append(AI(name: "Player2", tileColor: SKColor.blueColor(), actionColor: SKColor.blueColor(), game: self))
-                        }
-                        
-                        if playersAmount >= 3 {
-                            players.append(Human(name: "Player3", tileColor: SKColor.greenColor(), actionColor: SKColor.greenColor(), game: self))
-                        } else {
-                            players.append(AI(name: "Player3", tileColor: SKColor.greenColor(), actionColor: SKColor.greenColor(), game: self))
-                        }
-                        
-                        if playersAmount >= 4 {
-                            players.append(Human(name: "Player4", tileColor: SKColor.purpleColor(), actionColor: SKColor.purpleColor(), game: self))
-                        } else {
-                            players.append(AI(name: "Player4", tileColor: SKColor.purpleColor(), actionColor: SKColor.purpleColor(), game: self))
-                        }
-                        
-                        srandom(UInt32(time(nil)))
-                        
-                        currentPlayerIndex = random() % players.count
-                        
-                        return true
+            if let label = node as? SKShapeNode {
+                if let playersAmount: Int = Int(label.name!) {
+                    
+                    players.removeAll()
+                    
+                    if playersAmount >= 1 {
+                        players.append(Human(name: "CZERWONY", tileColor: SKColor.redColor(), actionColor: SKColor.redColor(), game: self))
+                    } else {
+                        players.append(AI(name: "CZERWONY", tileColor: SKColor.redColor(), actionColor: SKColor.redColor(), game: self))
                     }
+                    
+                    if playersAmount >= 2 {
+                        players.append(Human(name: "NIEBIESKI", tileColor: SKColor.blueColor(), actionColor: SKColor.blueColor(), game: self))
+                    } else {
+                        players.append(AI(name: "NIEBIESKI", tileColor: SKColor.blueColor(), actionColor: SKColor.blueColor(), game: self))
+                    }
+                    
+                    if playersAmount >= 3 {
+                        players.append(Human(name: "ZIELONY", tileColor: SKColor.greenColor(), actionColor: SKColor.greenColor(), game: self))
+                    } else {
+                        players.append(AI(name: "ZIELONY", tileColor: SKColor.greenColor(), actionColor: SKColor.greenColor(), game: self))
+                    }
+                    
+                    if playersAmount >= 4 {
+                        players.append(Human(name: "FIOLETOWY", tileColor: SKColor.purpleColor(), actionColor: SKColor.purpleColor(), game: self))
+                    } else {
+                        players.append(AI(name: "FIOLETOWY", tileColor: SKColor.purpleColor(), actionColor: SKColor.purpleColor(), game: self))
+                    }
+                    
+                    srandom(UInt32(time(nil)))
+                    
+                    currentPlayerIndex = random() % players.count
+                    
+                    return true
                 }
             }
         }
