@@ -12,8 +12,11 @@ class GameScene: SKScene {
     
     var game: Gameplay!
     
-    var message: SKLabelNode! = nil
-    var messageDescription: SKLabelNode! = nil
+    var message: SKLabelNode!
+    var messageDescription: SKLabelNode!
+    
+    var winMessage: SKLabelNode!
+    var winMessageBox: SKShapeNode!
     
     override func didMoveToView(view: SKView) {
         
@@ -68,7 +71,8 @@ class GameScene: SKScene {
             case .Win(let condition):
                 switch condition {
                 case .Pre: break
-                case .In: break
+                case .In:
+                    game.state = .Win(.Post)
                 case .Post: break
                 }
             case .Undefined: break
@@ -130,13 +134,19 @@ class GameScene: SKScene {
                 }
             case .In: break
             case .Post:
-                if game.actionMovePost() { game.state = .Reinforcement(.Pre) }
+                if game.actionMovePost() {
+                    if game.players.filter({ $0.active }).count == 1 { game.state = .Win(.Pre) }
+                    else { game.state = .Reinforcement(.Pre) }
+                }
+                
             }
         case .Win(let condition):
             switch condition {
-            case .Pre: break
+            case .Pre:
+                if game.actionWinPre() { game.state = .Win(.In) }
             case .In: break
-            case .Post: break
+            case .Post:
+                if game.actionWinPost() { game.state = .Create(.Pre) }
             }
         case .Undefined: break
         }

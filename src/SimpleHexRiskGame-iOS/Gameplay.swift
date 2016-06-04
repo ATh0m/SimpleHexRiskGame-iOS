@@ -30,7 +30,7 @@ class Gameplay {
     init(gameScene: GameScene) {
         self.gameScene = gameScene
         
-        board = Board(minTilesAmount: 15, maxTilesAmount: 30)
+        board = Board(minTilesAmount: 5, maxTilesAmount: 30)
         state = .Create(.Pre)
     }
     
@@ -148,6 +148,25 @@ class Gameplay {
         gameScene.messageDescription.position = CGPoint(x: gameScene.size.width / 2, y: 20 )
         gameScene.addChild(gameScene.messageDescription)
         
+        gameScene.winMessageBox = SKShapeNode(rectOfSize: CGSize(width: gameScene.size.width, height: 70))
+        gameScene.winMessageBox.position = CGPoint(x: gameScene.size.width / 2, y: gameScene.size.height / 2 )
+        gameScene.winMessageBox.fillColor = SKColor(red: 0, green: 0, blue: 0, alpha: 0.8)
+        gameScene.winMessageBox.lineWidth = 0
+        gameScene.winMessageBox.zPosition = 1000
+        gameScene.winMessageBox.hidden = true
+        gameScene.addChild(gameScene.winMessageBox)
+        
+        
+        gameScene.winMessage = SKLabelNode(fontNamed: "Helvetica Neue")
+        gameScene.winMessage.text = ""
+        gameScene.winMessage.fontSize = 20
+        gameScene.winMessage.zPosition = 1001
+        gameScene.winMessage.fontColor = SKColor.clearColor()
+        gameScene.winMessage.position = CGPoint(x: 0, y: 0)
+        gameScene.winMessage.verticalAlignmentMode = .Center
+        gameScene.winMessage.horizontalAlignmentMode = .Center
+        gameScene.winMessageBox.addChild(gameScene.winMessage)
+        
         return true
     }
     
@@ -190,7 +209,7 @@ class Gameplay {
         
         gameScene.message.text = "Gracz \(player.name) rozstaw swoje siły. Pozostało \(player.reinforcements)"
         gameScene.message.fontColor = players[currentPlayerIndex].tileColor
-        gameScene.messageDescription.text = "Wybierz swoje pole, które chcesz wzmocnić. Kliknięcie prawym przyciskiem dodaje wszystkie jednostki"
+        gameScene.messageDescription.text = "Wybierz swoje pole, które chcesz wzmocnić"
         
         return true
         
@@ -254,6 +273,29 @@ class Gameplay {
         
         return true
     
+    }
+    
+    func actionWinPre() -> Bool {
+        
+        if let index = players.indexOf({$0.active}) {
+            let player = players[index]
+            
+            gameScene.winMessage.text = "Gracz \(player.name.uppercaseString) wygrał. Kliknij, aby zacząć od nowa"
+            gameScene.winMessage.fontColor = player.actionColor
+            gameScene.winMessageBox.hidden = false
+            
+            return true
+        }
+        
+        return false
+    }
+    
+    func actionWinPost() -> Bool {
+        
+        gameScene.removeAllChildren()
+        board = Board(minTilesAmount: 5, maxTilesAmount: 30)
+        
+        return true
     }
 }
 
