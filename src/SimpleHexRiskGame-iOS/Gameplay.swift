@@ -38,7 +38,7 @@ class Gameplay {
         
         let center = CGPoint(x: gameScene.size.width / 2, y: gameScene.size.height / 2)
         
-        let labelsConfig: [(String, CGVector, CGFloat, String)] = [ ("SimpleHexRiskGame", CGVector(dx: 0, dy: 130), 20, ""),
+        let labelsConfig: [(String, CGVector, CGFloat, String)] = [ ("SimpleHexRiskGame".uppercaseString, CGVector(dx: 0, dy: 130), 20, ""),
                                                                     ("Jest to prosta gra strategiczna na podstawie gry Ryzyko. Twoim celem jest wyeliminowanie przeciwnych graczy.", CGVector(dx: 0, dy: 70), 12, ""),
                                                                     ("Przejmuj neutralne i wrogie tereny, aby powiększać swoje wojska", CGVector(dx: 0, dy: 50), 12, ""),
                                                                     ("Po przejęciu pustego pola, jego wartość będzie równa średniej wartości sąsiadów", CGVector(dx: 0, dy: 30), 12, ""),
@@ -76,43 +76,45 @@ class Gameplay {
         return true
     }
     
-    func actionCreateIn(node: SKNode) -> Bool {
+    func actionCreateIn(nodes: [SKNode]) -> Bool {
         
-        if let label = node as? SKLabelNode {
-            if ((label.name?.hasPrefix("playersAmount: ")) != nil) {
-                if let playersAmount: Int = Int(label.text!) {
-                    
-                    players.removeAll()
-                    
-                    if playersAmount >= 1 {
-                        players.append(Human(name: "Player1", tileColor: SKColor.redColor(), actionColor: SKColor.redColor(), board: board))
-                    } else {
-                        players.append(AI(name: "Player1", tileColor: SKColor.redColor(), actionColor: SKColor.redColor(), board: board))
+        for node in nodes {
+            if let label = node as? SKLabelNode {
+                if ((label.name?.hasPrefix("playersAmount: ")) != nil) {
+                    if let playersAmount: Int = Int(label.text!) {
+                        
+                        players.removeAll()
+                        
+                        if playersAmount >= 1 {
+                            players.append(Human(name: "Player1", tileColor: SKColor.redColor(), actionColor: SKColor.redColor(), game: self))
+                        } else {
+                            players.append(AI(name: "Player1", tileColor: SKColor.redColor(), actionColor: SKColor.redColor(), game: self))
+                        }
+                        
+                        if playersAmount >= 2 {
+                            players.append(Human(name: "Player2", tileColor: SKColor.blueColor(), actionColor: SKColor.blueColor(), game: self))
+                        } else {
+                            players.append(AI(name: "Player2", tileColor: SKColor.blueColor(), actionColor: SKColor.blueColor(), game: self))
+                        }
+                        
+                        if playersAmount >= 3 {
+                            players.append(Human(name: "Player3", tileColor: SKColor.greenColor(), actionColor: SKColor.greenColor(), game: self))
+                        } else {
+                            players.append(AI(name: "Player3", tileColor: SKColor.greenColor(), actionColor: SKColor.greenColor(), game: self))
+                        }
+                        
+                        if playersAmount >= 4 {
+                            players.append(Human(name: "Player4", tileColor: SKColor.purpleColor(), actionColor: SKColor.purpleColor(), game: self))
+                        } else {
+                            players.append(AI(name: "Player4", tileColor: SKColor.purpleColor(), actionColor: SKColor.purpleColor(), game: self))
+                        }
+                        
+                        srandom(UInt32(time(nil)))
+                        
+                        currentPlayerIndex = random() % players.count
+                        
+                        return true
                     }
-                    
-                    if playersAmount >= 2 {
-                        players.append(Human(name: "Player2", tileColor: SKColor.blueColor(), actionColor: SKColor.blueColor(), board: board))
-                    } else {
-                        players.append(AI(name: "Player2", tileColor: SKColor.blueColor(), actionColor: SKColor.blueColor(), board: board))
-                    }
-                    
-                    if playersAmount >= 3 {
-                        players.append(Human(name: "Player3", tileColor: SKColor.greenColor(), actionColor: SKColor.greenColor(), board: board))
-                    } else {
-                        players.append(AI(name: "Player3", tileColor: SKColor.greenColor(), actionColor: SKColor.greenColor(), board: board))
-                    }
-                    
-                    if playersAmount >= 4 {
-                        players.append(Human(name: "Player4", tileColor: SKColor.purpleColor(), actionColor: SKColor.purpleColor(), board: board))
-                    } else {
-                        players.append(AI(name: "Player4", tileColor: SKColor.purpleColor(), actionColor: SKColor.purpleColor(), board: board))
-                    }
-                    
-                    srandom(UInt32(time(nil)))
-                    
-                    currentPlayerIndex = random() % players.count
-                    
-                    return true
                 }
             }
         }
@@ -152,12 +154,6 @@ class Gameplay {
     func actionStartPre() -> Bool {
         
         let player = players[currentPlayerIndex]
-        
-        if player.tiles.count > 0 { return true }
-        
-        if player is AI {
-            if (player as! AI).actionStartPre() { return true }
-        }
         
         gameScene.message.text = "Gracz \(player.name) wybierz swoje startowe pole"
         gameScene.message.fontColor = players[currentPlayerIndex].tileColor
@@ -259,7 +255,17 @@ class Gameplay {
         return true
     
     }
-    
-    func executeActions() {}
-    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

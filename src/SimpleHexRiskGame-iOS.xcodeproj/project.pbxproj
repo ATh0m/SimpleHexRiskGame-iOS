@@ -19,6 +19,8 @@
 		9FA743671CF89DD800C773A2 /* SimpleHexRiskGame_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA743661CF89DD800C773A2 /* SimpleHexRiskGame_iOSTests.swift */; };
 		9FA743721CF89DD800C773A2 /* SimpleHexRiskGame_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA743711CF89DD800C773A2 /* SimpleHexRiskGame_iOSUITests.swift */; };
 		9FA743821CF8C6C000C773A2 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA743811CF8C6C000C773A2 /* Board.swift */; };
+		9FF23CD41D023E53004B3327 /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF23CD21D023E53004B3327 /* Battle.swift */; };
+		9FF23CD51D023E53004B3327 /* Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF23CD31D023E53004B3327 /* Gameplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		9FA743711CF89DD800C773A2 /* SimpleHexRiskGame_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHexRiskGame_iOSUITests.swift; sourceTree = "<group>"; };
 		9FA743731CF89DD800C773A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FA743811CF8C6C000C773A2 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		9FF23CD21D023E53004B3327 /* Battle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
+		9FF23CD31D023E53004B3327 /* Gameplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gameplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,8 @@
 		9FA7434C1CF89DD800C773A2 /* SimpleHexRiskGame-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9FF23CD21D023E53004B3327 /* Battle.swift */,
+				9FF23CD31D023E53004B3327 /* Gameplay.swift */,
 				9FA743511CF89DD800C773A2 /* GameScene.swift */,
 				9F0ADB8B1CFA67B300E6378E /* Helper.swift */,
 				9F0ADB8E1CFAA82200E6378E /* Tile.swift */,
@@ -283,9 +289,11 @@
 				9FA743521CF89DD800C773A2 /* GameScene.swift in Sources */,
 				9FA743541CF89DD800C773A2 /* GameViewController.swift in Sources */,
 				9FA743821CF8C6C000C773A2 /* Board.swift in Sources */,
+				9FF23CD41D023E53004B3327 /* Battle.swift in Sources */,
 				9F0ADB8F1CFAA82200E6378E /* Tile.swift in Sources */,
 				9F0ADB921CFAA9F400E6378E /* Player.swift in Sources */,
 				9FA7434E1CF89DD800C773A2 /* AppDelegate.swift in Sources */,
+				9FF23CD51D023E53004B3327 /* Gameplay.swift in Sources */,
 				9F0ADB8C1CFA67B300E6378E /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

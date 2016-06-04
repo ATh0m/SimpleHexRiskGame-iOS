@@ -30,11 +30,11 @@ class Player {
     var tilesAdjacentNeutral: [Tile] = [Tile]()
     var tilesAdjacentEnemies: [Tile] = [Tile]()
     
-    init(name: String, tileColor: SKColor, actionColor: SKColor, board: Board) {
+    init(name: String, tileColor: SKColor, actionColor: SKColor, game: Gameplay) {
         self.name = name
         self.tileColor = tileColor
         self.actionColor = actionColor
-        self.board = board
+        self.game = game
         
         self.active = true
     }
@@ -69,22 +69,37 @@ class Player {
         
     }
     
+    func actionStartPre() -> Bool { return true }
+    func actionStartIn(nodes: [SKNode]) -> Bool { return true }
+    func actionReinforcementPre() -> Bool { return true }
+    func actionReinforcementIn(nodes: [SKNode]) -> Bool { return true }
+    func actionMovePre() -> Bool { return true }
+    func actionMoveIn(nodes: [SKNode]) -> Bool { return true }
+    
 }
 
 class Human: Player {
-    
-    func actionStartIn(tile: Tile) -> Bool {
+
+    override func actionStartIn(nodes: [SKNode]) -> Bool {
         
-        if tile.owner != nil { return false }
+        for node in nodes {
+            if let tileShape = node as? Tile.TileShape {
+                let tile = tileShape.tile
+                
+                if tile.owner != nil { return false }
+                
+                tile.owner = self
+                tile.force = 3
+                tiles.append(tile)
+                
+                return true
+            }
+        }
         
-        tile.owner = self
-        tile.force = 3
-        tiles.append(tile)
-        
-        return true
+        return false
     }
     
-    func actionReinforcementPre() -> Bool {
+    override func actionReinforcementPre() -> Bool {
     
         self.reinforcements = UInt(max(2, self.tiles.count / 3))
         
@@ -93,20 +108,29 @@ class Human: Player {
             tile.actionable = true
         }
     
+        return true
     }
     
-    func actionReinforcementIn(tile: Tile) -> Bool {
+    override func actionReinforcementIn(nodes: [SKNode]) -> Bool {
         
-        if tile.owner === self {
-            tile.force += 1
-            self.reinforcements -= 1
+        for node in nodes {
+            if let tileShape = node as? Tile.TileShape {
+                let tile = tileShape.tile
+                
+                if tile.owner === self {
+                    tile.force += 1
+                    self.reinforcements -= 1
+                }
+                
+                return reinforcements <= 0
+            }
         }
         
-        return reinforcements <= 0
+        return false
         
     }
     
-    func actionMovePre() -> Bool {
+    override func actionMovePre() -> Bool {
         
         for tile in tiles {
             tile.shape.strokeColor = actionColor
@@ -117,78 +141,88 @@ class Human: Player {
             }
         }
         
-    }
-    
-    func actionMoveIn(tile: Tile) -> Bool {
-        
-        if tile.actionable {
-            
-            if tile.owner === self {
-                
-                tile.force += 2
-                
-            } else if tile.owner == nil {
-                
-                var attackPower: UInt = 0
-                
-                for neighbourTile in tile.neighbours {
-                    if neighbourTile.owner === self {
-                        attackPower += neighbourTile.force / 2
-                    }
-                }
-                
-                if attackPower <= 0 { return false }
-                
-                tile.owner = self
-                tile.force = attackPower
-                
-                tiles.append(tile)
-                
-            } else if tile.owner !== self {
-                
-                var attackPower: UInt = 0
-                
-                for neighbourTile in tile.neighbours {
-                    if neighbourTile.owner === self {
-                        attackPower += neighbourTile.force / 2
-                        neighbourTile.force -= neighbourTile.force / 2
-                    }
-                }
-                
-                let defensePower = tile.force
-                
-                let (leftAttackPower, leftDefensePower) = Battle.battle(attackPower, defense: defensePower)
-                
-                if leftAttackPower > 0 {
-                    
-                    let opponent: Player! = tile.owner
-                    
-                    let index = opponent.tiles.indexOf({$0 === tile})
-                    opponent.tiles.removeAtIndex(index!)
-                    
-                    tiles.append(tile)
-                    tile.owner = self
-                    tile.force = leftAttackPower
-                    
-                    if opponent.tiles.count == 0 {
-                        opponent.active = false
-                    }
-                    
-                } else {
-                    tile.force = leftDefensePower
-                }
-                
-            } else { return false }
-        }
-        
         return true
     }
     
+    override func actionMoveIn(nodes: [SKNode]) -> Bool {
+        
+        for node in nodes {
+            if let tileShape = node as? Tile.TileShape {
+                let tile = tileShape.tile
+                
+                if tile.actionable {
+                    
+                    if tile.owner === self {
+                        
+                        tile.force += 2
+                        
+                    } else if tile.owner == nil {
+                        
+                        var attackPower: UInt = 0
+                        
+                        for neighbourTile in tile.neighbours {
+                            if neighbourTile.owner === self {
+                                attackPower += neighbourTile.force / 2
+                            }
+                        }
+                        
+                        if attackPower <= 0 { return false }
+                        
+                        tile.owner = self
+                        tile.force = attackPower
+                        
+                        tiles.append(tile)
+                        
+                    } else if tile.owner !== self {
+                        
+                        var attackPower: UInt = 0
+                        
+                        for neighbourTile in tile.neighbours {
+                            if neighbourTile.owner === self {
+                                attackPower += neighbourTile.force / 2
+                                neighbourTile.force -= neighbourTile.force / 2
+                            }
+                        }
+                        
+                        let defensePower = tile.force
+                        
+                        let (leftAttackPower, leftDefensePower) = Battle.battle(attackPower, defense: defensePower)
+                        
+                        if leftAttackPower > 0 {
+                            
+                            let opponent: Player! = tile.owner
+                            
+                            let index = opponent.tiles.indexOf({$0 === tile})
+                            opponent.tiles.removeAtIndex(index!)
+                            
+                            tiles.append(tile)
+                            tile.owner = self
+                            tile.force = leftAttackPower
+                            
+                            if opponent.tiles.count == 0 {
+                                opponent.active = false
+                            }
+                            
+                        } else {
+                            tile.force = leftDefensePower
+                        }
+                        
+                    } else { return false }
+                    
+                    return true
+                }
+                
+                return false
+            }
+        }
+        
+        return false
+    }
 }
 
 class AI: Player {
     
-    func actionStartPre() -> Bool {
+    override func actionStartPre() -> Bool {
         srandom(UInt32(time(nil)))
         
         var tile = game.board.tiles[random() % game.board.tiles.count]
@@ -204,7 +238,7 @@ class AI: Player {
         return true
     }
     
-    func actionReinforcementPre() -> Bool {
+    override func actionReinforcementPre() -> Bool {
         reinforcements = UInt(max(3, tiles.count / 2))
         
         prepareInfoAboutTiles()
@@ -231,7 +265,7 @@ class AI: Player {
         
     }
     
-    func actionMovePre() -> Bool {
+    override func actionMovePre() -> Bool {
         
         srand48(time(nil))
         srandom(UInt32(time(nil)))
@@ -328,6 +362,8 @@ class AI: Player {
             
         } else { return false }
         
+        
+        return true
     }
     
 }
