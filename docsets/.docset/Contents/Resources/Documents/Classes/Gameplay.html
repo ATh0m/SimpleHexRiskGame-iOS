@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Gameplay Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/Gameplay" class="dashAnchor"></a>
+
+    <a title="Gameplay Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+           Docs
+        </a>
+         (100% documented)
+      </p>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html"> Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      Gameplay Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AI.html">AI</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Battle.html">Battle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Board.html">Board</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GameScene.html">GameScene</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Gameplay.html">Gameplay</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Gameplay/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Human.html">Human</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Player.html">Player</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Tile.html">Tile</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Tile/TileShape.html">– TileShape</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:ZF7HEXRiskoi1pFTVSC7CGPointVSC8CGVector_S0_">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:ZF7HEXRiskoi2peFTRVSC7CGPointVSC8CGVector_T_">+=(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>Gameplay</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">Gameplay</span></code></pre>
+
+                </div>
+              </div>
+            <p>Klasa do zarządzania całą rozgrywką</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7HEXRisk8Gameplay5boardGSQCS_5Board_"></a>
+                    <a name="//apple_ref/swift/Property/board" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7HEXRisk8Gameplay5boardGSQCS_5Board_">board</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Dostęp do planszy</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">board</span><span class="p">:</span> <span class="kt">Board</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7HEXRisk8Gameplay9gameSceneGSQCS_9GameScene_"></a>
+                    <a name="//apple_ref/swift/Property/gameScene" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7HEXRisk8Gameplay9gameSceneGSQCS_9GameScene_">gameScene</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Dostęp do widoku gry</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">gameScene</span><span class="p">:</span> <span class="kt">GameScene</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7HEXRisk8Gameplay7playersGSaCS_6Player_"></a>
+                    <a name="//apple_ref/swift/Property/players" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7HEXRisk8Gameplay7playersGSaCS_6Player_">players</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Lista graczy</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">players</span><span class="p">:</span> <span class="p">[</span><span class="kt">Player</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Player</span><span class="p">]()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7HEXRisk8Gameplay18currentPlayerIndexSi"></a>
+                    <a name="//apple_ref/swift/Property/currentPlayerIndex" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7HEXRisk8Gameplay18currentPlayerIndexSi">currentPlayerIndex</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indeks obecnego gracza w liście graczy</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">currentPlayerIndex</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7HEXRisk8Gameplay5stateOS0_5State"></a>
+                    <a name="//apple_ref/swift/Property/state" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7HEXRisk8Gameplay5stateOS0_5State">state</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Obecny stan gry</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">State</span> <span class="o">=</span> <span class="o">.</span><span class="kt">Undefined</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:OC7HEXRisk8Gameplay5State"></a>
+                    <a name="//apple_ref/swift/Enum/State" class="dashAnchor"></a>
+                    <a class="token" href="#/s:OC7HEXRisk8Gameplay5State">State</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stany gry</p>
+
+<ul>
+<li>Create:        Wyświetlenie ekranu startowego i tworzenie nowej rozgrywki</li>
+<li>Start:         Tura, kiedy gracze wybierają ich startowe pola</li>
+<li>Reinforcement: Tura, kiedy gracze wzmacniają swoje pola</li>
+<li>Move:          Tura, kiedy gracze mogą zaatakować inne pole lub wzmocnić swoje</li>
+<li>Win:           Koniec gry i wyświetlenie zwycięzcy</li>
+<li><p>Undefined:     Niezdefiniowany stan</p></li>
+<li><p>Condition:     Podział stanu na 3 części (Pre, In, Post)</p></li>
+</ul>
+
+                        <a href="../Classes/Gameplay/State.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">enum</span> <span class="kt">State</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8GameplaycFT9gameSceneCS_9GameScene_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(gameScene:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8GameplaycFT9gameSceneCS_9GameScene_S0_">init(gameScene:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tworzenie nowej rozgrywki</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="nf">init</span><span class="p">(</span><span class="nv">gameScene</span><span class="p">:</span> <span class="kt">GameScene</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay15actionCreatePreFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionCreatePre()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay15actionCreatePreFT_Sb">actionCreatePre()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania przed stanem Create</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionCreatePre</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay14actionCreateInFGSaCSo6SKNode_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionCreateIn(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay14actionCreateInFGSaCSo6SKNode_Sb">actionCreateIn(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania w trakcie stanu Create</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionCreateIn</span><span class="p">(</span><span class="nv">nodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">SKNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay16actionCreatePostFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionCreatePost()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay16actionCreatePostFT_Sb">actionCreatePost()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania po stanie Create</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionCreatePost</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay14actionStartPreFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionStartPre()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay14actionStartPreFT_Sb">actionStartPre()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania przed stanem Create</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionStartPre</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay13actionStartInFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionStartIn()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay13actionStartInFT_Sb">actionStartIn()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania w trakcie stanu Start</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionStartIn</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay15actionStartPostFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionStartPost()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay15actionStartPostFT_Sb">actionStartPost()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania po stanie Start</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionStartPost</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay22actionReinforcementPreFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionReinforcementPre()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay22actionReinforcementPreFT_Sb">actionReinforcementPre()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania przed stanem Reinforcement</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionReinforcementPre</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay21actionReinforcementInFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionReinforcementIn()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay21actionReinforcementInFT_Sb">actionReinforcementIn()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania w trakcie stanu Reinforcement</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionReinforcementIn</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay23actionReinforcementPostFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionReinforcementPost()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay23actionReinforcementPostFT_Sb">actionReinforcementPost()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania po stanie Reinforcement</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionReinforcementPost</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay13actionMovePreFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionMovePre()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay13actionMovePreFT_Sb">actionMovePre()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania przed stanem Move</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionMovePre</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay12actionMoveInFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionMoveIn()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay12actionMoveInFT_Sb">actionMoveIn()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania w trakcie stanu Move</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionMoveIn</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay14actionMovePostFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionMovePost()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay14actionMovePostFT_Sb">actionMovePost()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania po stanie Move</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionMovePost</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay12actionWinPreFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionWinPre()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay12actionWinPreFT_Sb">actionWinPre()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania przed stanem Win</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionWinPre</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk8Gameplay13actionWinPostFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/actionWinPost()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk8Gameplay13actionWinPostFT_Sb">actionWinPost()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Akcja do wykonania po stanie Win</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">actionWinPost</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external">Tomasz Nanowski</a>. All rights reserved. (Last updated: 2016-06-11)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
