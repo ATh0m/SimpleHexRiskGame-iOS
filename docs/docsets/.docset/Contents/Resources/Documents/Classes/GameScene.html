@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AppDelegate Class Reference</title>
+    <title>GameScene Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -11,9 +11,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/AppDelegate" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Class/GameScene" class="dashAnchor"></a>
 
-    <a title="AppDelegate Class Reference"></a>
+    <a title="GameScene Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -29,7 +29,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html"> Reference</a>
       <img class="carat" src="../img/carat.png" />
-      AppDelegate Class Reference
+      GameScene Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -42,9 +42,6 @@
                 <a class="nav-group-task-link" href="../Classes/AI.html">AI</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/AppDelegate.html">AppDelegate</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/Battle.html">Battle</a>
               </li>
               <li class="nav-group-task">
@@ -52,9 +49,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/GameScene.html">GameScene</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/GameViewController.html">GameViewController</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/Gameplay.html">Gameplay</a>
@@ -93,14 +87,15 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>AppDelegate</h1>
+            <h1>GameScene</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">,</span> <span class="kt">UIApplicationDelegate</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">GameScene</span><span class="p">:</span> <span class="kt">SKScene</span></code></pre>
 
                 </div>
               </div>
-            
+            <p>Klasa do wyświetlania rozgrywki i reagowania na akcje graczy</p>
+
           </div>
         </section>
 
@@ -111,9 +106,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC7HEXRisk11AppDelegate6windowGSqCSo8UIWindow_"></a>
-                    <a name="//apple_ref/swift/Property/window" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC7HEXRisk11AppDelegate6windowGSqCSo8UIWindow_">window</a>
+                    <a name="/s:vC7HEXRisk9GameScene4gameGSQCS_8Gameplay_"></a>
+                    <a name="//apple_ref/swift/Property/game" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7HEXRisk9GameScene4gameGSQCS_8Gameplay_">game</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -121,13 +116,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Dostęp do całej rozgrywki</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">window</span><span class="p">:</span> <span class="kt">UIWindow</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">game</span><span class="p">:</span> <span class="kt">Gameplay</span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -137,9 +133,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7HEXRisk11AppDelegate11applicationFTCSo13UIApplication29didFinishLaunchingWithOptionsGSqGVs10DictionaryCSo8NSObjectPs9AnyObject____Sb"></a>
-                    <a name="//apple_ref/swift/Method/application(_:didFinishLaunchingWithOptions:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7HEXRisk11AppDelegate11applicationFTCSo13UIApplication29didFinishLaunchingWithOptionsGSqGVs10DictionaryCSo8NSObjectPs9AnyObject____Sb">application(_:didFinishLaunchingWithOptions:)</a>
+                    <a name="/s:vC7HEXRisk9GameScene7messageGSQCSo11SKLabelNode_"></a>
+                    <a name="//apple_ref/swift/Property/message" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7HEXRisk9GameScene7messageGSQCSo11SKLabelNode_">message</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -147,13 +143,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Etykieta do wyświetlania wiadomości na ekranie</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSObject</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">SKLabelNode</span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -163,9 +160,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7HEXRisk11AppDelegate27applicationWillResignActiveFCSo13UIApplicationT_"></a>
-                    <a name="//apple_ref/swift/Method/applicationWillResignActive(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7HEXRisk11AppDelegate27applicationWillResignActiveFCSo13UIApplicationT_">applicationWillResignActive(_:)</a>
+                    <a name="/s:vC7HEXRisk9GameScene18messageDescriptionGSQCSo11SKLabelNode_"></a>
+                    <a name="//apple_ref/swift/Property/messageDescription" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7HEXRisk9GameScene18messageDescriptionGSQCSo11SKLabelNode_">messageDescription</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -173,13 +170,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Etykieta do wyświetlania dodatkowych wiadomości na ekranie</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">applicationWillResignActive</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">messageDescription</span><span class="p">:</span> <span class="kt">SKLabelNode</span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -189,9 +187,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7HEXRisk11AppDelegate29applicationDidEnterBackgroundFCSo13UIApplicationT_"></a>
-                    <a name="//apple_ref/swift/Method/applicationDidEnterBackground(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7HEXRisk11AppDelegate29applicationDidEnterBackgroundFCSo13UIApplicationT_">applicationDidEnterBackground(_:)</a>
+                    <a name="/s:vC7HEXRisk9GameScene10winMessageGSQCSo11SKLabelNode_"></a>
+                    <a name="//apple_ref/swift/Property/winMessage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7HEXRisk9GameScene10winMessageGSQCSo11SKLabelNode_">winMessage</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -199,13 +197,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Etykieta do wyświetlania zwycięzcy na ekranie</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">applicationDidEnterBackground</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">winMessage</span><span class="p">:</span> <span class="kt">SKLabelNode</span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -215,9 +214,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7HEXRisk11AppDelegate30applicationWillEnterForegroundFCSo13UIApplicationT_"></a>
-                    <a name="//apple_ref/swift/Method/applicationWillEnterForeground(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7HEXRisk11AppDelegate30applicationWillEnterForegroundFCSo13UIApplicationT_">applicationWillEnterForeground(_:)</a>
+                    <a name="/s:vC7HEXRisk9GameScene13winMessageBoxGSQCSo11SKShapeNode_"></a>
+                    <a name="//apple_ref/swift/Property/winMessageBox" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7HEXRisk9GameScene13winMessageBoxGSQCSo11SKShapeNode_">winMessageBox</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -231,7 +230,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">applicationWillEnterForeground</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">winMessageBox</span><span class="p">:</span> <span class="kt">SKShapeNode</span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -241,9 +240,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7HEXRisk11AppDelegate26applicationDidBecomeActiveFCSo13UIApplicationT_"></a>
-                    <a name="//apple_ref/swift/Method/applicationDidBecomeActive(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7HEXRisk11AppDelegate26applicationDidBecomeActiveFCSo13UIApplicationT_">applicationDidBecomeActive(_:)</a>
+                    <a name="/s:FC7HEXRisk9GameScene13didMoveToViewFCSo6SKViewT_"></a>
+                    <a name="//apple_ref/swift/Method/didMoveToView(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk9GameScene13didMoveToViewFCSo6SKViewT_">didMoveToView(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -251,13 +250,61 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Wywoływana zaraz po wyświetleniu sceny przez widok</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">applicationDidBecomeActive</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">didMoveToView</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="kt">SKView</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Widok, gdzie prezentowana jest scena</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7HEXRisk9GameScene12touchesBeganFTGVs3SetCSo7UITouch_9withEventGSqCSo7UIEvent__T_"></a>
+                    <a name="//apple_ref/swift/Method/touchesBegan(_:withEvent:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk9GameScene12touchesBeganFTGVs3SetCSo7UITouch_9withEventGSqCSo7UIEvent__T_">touchesBegan(_:withEvent:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Informuje, gdy jedne lub więcej palców dotyka ekran</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">touchesBegan</span><span class="p">(</span><span class="nv">touches</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">UITouch</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">withEvent</span> <span class="nv">event</span><span class="p">:</span> <span class="kt">UIEvent</span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -267,9 +314,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7HEXRisk11AppDelegate24applicationWillTerminateFCSo13UIApplicationT_"></a>
-                    <a name="//apple_ref/swift/Method/applicationWillTerminate(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7HEXRisk11AppDelegate24applicationWillTerminateFCSo13UIApplicationT_">applicationWillTerminate(_:)</a>
+                    <a name="/s:FC7HEXRisk9GameScene6updateFSdT_"></a>
+                    <a name="//apple_ref/swift/Method/update(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7HEXRisk9GameScene6updateFSdT_">update(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -277,13 +324,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Wywoływana przed wyświetleniem każdej klatki</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">applicationWillTerminate</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">update</span><span class="p">(</span><span class="nv">currentTime</span><span class="p">:</span> <span class="kt">CFTimeInterval</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

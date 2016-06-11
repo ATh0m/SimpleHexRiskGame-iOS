@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>State Enum Reference</title>
+    <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../../js/jquery.min.js" defer></script>
+    <script src="../../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Enum/State" class="dashAnchor"></a>
+
+    <a title="State Enum Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../../index.html">
+           Docs
+        </a>
+         (100% documented)
+      </p>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../../index.html"> Reference</a>
+      <img class="carat" src="../../img/carat.png" />
+      State Enum Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/AI.html">AI</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/Battle.html">Battle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/Board.html">Board</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/GameScene.html">GameScene</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/Gameplay.html">Gameplay</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/Gameplay/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/Human.html">Human</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/Player.html">Player</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/Tile.html">Tile</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/Tile/TileShape.html">– TileShape</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Functions.html#/s:ZF7HEXRiskoi1pFTVSC7CGPointVSC8CGVector_S0_">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Functions.html#/s:ZF7HEXRiskoi2peFTRVSC7CGPointVSC8CGVector_T_">+=(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>State</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">enum</span> <span class="kt">State</span></code></pre>
+
+                </div>
+              </div>
+            <p>Stany gry</p>
+
+<ul>
+<li>Create:        Wyświetlenie ekranu startowego i tworzenie nowej rozgrywki</li>
+<li>Start:         Tura, kiedy gracze wybierają ich startowe pola</li>
+<li>Reinforcement: Tura, kiedy gracze wzmacniają swoje pola</li>
+<li>Move:          Tura, kiedy gracze mogą zaatakować inne pole lub wzmocnić swoje</li>
+<li>Win:           Koniec gry i wyświetlenie zwycięzcy</li>
+<li><p>Undefined:     Niezdefiniowany stan</p></li>
+<li><p>Condition:     Podział stanu na 3 części (Pre, In, Post)</p></li>
+</ul>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FOC7HEXRisk8Gameplay5State6CreateFMS1_FOS1_9ConditionS1_"></a>
+                    <a name="//apple_ref/swift/Element/Create" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FOC7HEXRisk8Gameplay5State6CreateFMS1_FOS1_9ConditionS1_">Create</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Wyświetlenie ekranu startowego i tworzenie nowej rozgrywki</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Create</span><span class="p">(</span><span class="kt">Condition</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FOC7HEXRisk8Gameplay5State5StartFMS1_FOS1_9ConditionS1_"></a>
+                    <a name="//apple_ref/swift/Element/Start" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FOC7HEXRisk8Gameplay5State5StartFMS1_FOS1_9ConditionS1_">Start</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tura, kiedy gracze wybierają ich startowe pola</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Start</span><span class="p">(</span><span class="kt">Condition</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FOC7HEXRisk8Gameplay5State13ReinforcementFMS1_FOS1_9ConditionS1_"></a>
+                    <a name="//apple_ref/swift/Element/Reinforcement" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FOC7HEXRisk8Gameplay5State13ReinforcementFMS1_FOS1_9ConditionS1_">Reinforcement</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tura, kiedy gracze wzmacniają swoje pola</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Reinforcement</span><span class="p">(</span><span class="kt">Condition</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FOC7HEXRisk8Gameplay5State4MoveFMS1_FOS1_9ConditionS1_"></a>
+                    <a name="//apple_ref/swift/Element/Move" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FOC7HEXRisk8Gameplay5State4MoveFMS1_FOS1_9ConditionS1_">Move</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tura, kiedy gracze mogą zaatakować inne pole lub wzmocnić swoje</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Move</span><span class="p">(</span><span class="kt">Condition</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FOC7HEXRisk8Gameplay5State3WinFMS1_FOS1_9ConditionS1_"></a>
+                    <a name="//apple_ref/swift/Element/Win" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FOC7HEXRisk8Gameplay5State3WinFMS1_FOS1_9ConditionS1_">Win</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Koniec gry i wyświetlenie zwycięzcy</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Win</span><span class="p">(</span><span class="kt">Condition</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FOC7HEXRisk8Gameplay5State9UndefinedFMS1_S1_"></a>
+                    <a name="//apple_ref/swift/Element/Undefined" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FOC7HEXRisk8Gameplay5State9UndefinedFMS1_S1_">Undefined</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Niezdefiniowany stan</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Undefined</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:OOC7HEXRisk8Gameplay5State9Condition"></a>
+                    <a name="//apple_ref/swift/Enum/Condition" class="dashAnchor"></a>
+                    <a class="token" href="#/s:OOC7HEXRisk8Gameplay5State9Condition">Condition</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Podział stanu na 3 części (Pre, In, Post)</p>
+
+<ul>
+<li>Pre:  W tej części wykonywane są akcje przed stanem</li>
+<li>In:   W tej części wykonywane są akcje w trakcie stanu</li>
+<li>Post: W tej części wykonywane są akcje po stanie</li>
+</ul>
+
+                        <a href="../../Classes/Gameplay/State/Condition.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">enum</span> <span class="kt">Condition</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external">Tomasz Nanowski</a>. All rights reserved. (Last updated: 2016-06-11)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
