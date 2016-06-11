@@ -10,13 +10,13 @@ Jest to prosta gra strategiczna opierająca się na zasadach gry ***"Ryzyko"*** 
 
 ## SCREENY:
 
-![](https://raw.githubusercontent.com/AThom0x7cc/SimpleHexRiskGame-iOS/develop/screens/screen.png)
+![](screens/screen.png)
 
-![](https://raw.githubusercontent.com/AThom0x7cc/SimpleHexRiskGame-iOS/develop/screens/screen2.png)
+![](screens/screen2.png)
 
-![](https://raw.githubusercontent.com/AThom0x7cc/SimpleHexRiskGame-iOS/develop/screens/screen3.png)
+![](screens/screen3.png)
 
-![](https://raw.githubusercontent.com/AThom0x7cc/SimpleHexRiskGame-iOS/develop/screens/screen4.png)
+![](screens/screen4.png)
 
 ---
 
@@ -119,7 +119,7 @@ Gra będzie wykorzystywać framework SpriteKit. Na początku wyświetlana będzi
 
 ------
 
-![](https://raw.githubusercontent.com/AThom0x7cc/SimpleHexRiskGame-iOS/develop/screens/diagram.png)
+![](screens/diagram.png)
 
 ------
 
@@ -133,7 +133,7 @@ Gra będzie wykorzystywać framework SpriteKit. Na początku wyświetlana będzi
 
 - [http://www.redblobgames.com/grids/hexagons/](http://www.redblobgames.com/grids/hexagons/) - genialna strona o hexagonach
 - https://developer.apple.com/library/ios/documentation/SpriteKit/Reference/SpriteKitFramework_Ref/ - dokumentacja SpriteKit
-- dokumentacja projektu
+- https://athom0x7cc.github.io/SimpleHexRiskGame-iOS/ - dokumentacja projektu
 
 ------
 
