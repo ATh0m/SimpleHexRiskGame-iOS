@@ -10,13 +10,13 @@ Jest to prosta gra strategiczna opierająca się na zasadach gry ***"Ryzyko"*** 
 
 ## SCREENY:
 
-![](screens/screen.png)
+![](https://raw.githubusercontent.com/AThom0x7cc/SimpleHexRiskGame-iOS/develop/screens/screen.png)
 
-![](screens/screen2.png)
+![](https://raw.githubusercontent.com/AThom0x7cc/SimpleHexRiskGame-iOS/develop/screens/screen2.png)
 
-![](screens/screen3.png)
+![](https://raw.githubusercontent.com/AThom0x7cc/SimpleHexRiskGame-iOS/develop/screens/screen3.png)
 
-![](screens/screen4.png)
+![](https://raw.githubusercontent.com/AThom0x7cc/SimpleHexRiskGame-iOS/develop/screens/screen4.png)
 
 ---
 
@@ -119,7 +119,7 @@ Gra będzie wykorzystywać framework SpriteKit. Na początku wyświetlana będzi
 
 ------
 
-![](screens/diagram.png)
+![](https://raw.githubusercontent.com/AThom0x7cc/SimpleHexRiskGame-iOS/develop/screens/diagram.png)
 
 ------
 
