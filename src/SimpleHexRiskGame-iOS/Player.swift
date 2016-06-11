@@ -9,27 +9,47 @@
 import Foundation
 import SpriteKit
 
+/// Klasa zawierająca informacje o graczu i jego akcje
 class Player {
     
+    /// Nazwa gracza
     var name: String = ""
     
+    /// Informacja o tym czy gracz jest aktywny (czy nie został jeszcze wyeliminowany)
     var active: Bool = false
     
+    /// Kolor pól gracza
     var tileColor: SKColor
+    /// Kolor akcji gracza
     var actionColor: SKColor
     
+    /// Ilość jednostek, którymi gracz może wzmocnić swoje pola
     var reinforcements: UInt = 0
     
+    /// Dostęp do całej rozgrywki
     var game: Gameplay
     
+    /// Lista pól, które należą do gracza
     var tiles: [Tile] = [Tile]()
     
+    /// Lista neutralnych pól, na których gracz może wykonać akcje
     var actionableNeutralTiles: [Tile] = [Tile]()
+    /// Lista wrogich pól, na których gracz może wykonać akcje
     var actionableEnemyTiles: [Tile] = [Tile]()
     
+    /// Lista neutralnych, graniczących pól
     var tilesAdjacentNeutral: [Tile] = [Tile]()
+    /// Lista wrogich, graniczących pól
     var tilesAdjacentEnemies: [Tile] = [Tile]()
     
+    /**
+     Tworzenie nowego gracza
+     
+     - parameter name:        Nazwa gracza
+     - parameter tileColor:   Kolor pól gracza
+     - parameter actionColor: Kolor akcji gracza
+     - parameter game:        Wskaźnik na rozgrywkę
+     */
     init(name: String, tileColor: SKColor, actionColor: SKColor, game: Gameplay) {
         self.name = name
         self.tileColor = tileColor
@@ -39,6 +59,14 @@ class Player {
         self.active = true
     }
     
+    /**
+     Aktualizuje listę graniczących pól i tych, na których gracz może wykonać akcje
+     
+     - tilesAdjacentNeutral
+     - tilesAdjacentEnemies
+     - actionableNeutralTiles
+     - actionableEnemyTiles
+     */
     func prepareInfoAboutTiles() {
         
         actionableNeutralTiles.removeAll(keepCapacity: true)
@@ -69,301 +97,29 @@ class Player {
         
     }
     
+    /**
+     Akcja do wykonania przed stanem Start
+     */
     func actionStartPre() -> Bool { return true }
+    /**
+     Akcja do wykonania w trakcie stanu Start
+     */
     func actionStartIn(nodes: [SKNode]) -> Bool { return true }
+    /**
+     Akcja do wykonania przed stanem Reinforcement
+     */
     func actionReinforcementPre() -> Bool { return true }
+    /**
+     Akcja do wykonania w trakcie stanu Reinforcement
+     */
     func actionReinforcementIn(nodes: [SKNode]) -> Bool { return true }
+    /**
+     Akcja do wykonania przed stanem Move
+     */
     func actionMovePre() -> Bool { return true }
+    /**
+     Akcja do wykonania w trakcie stanu Move
+     */
     func actionMoveIn(nodes: [SKNode]) -> Bool { return true }
-    
-}
-
-class Human: Player {
-
-    override func actionStartIn(nodes: [SKNode]) -> Bool {
-        
-        for node in nodes {
-            if let tileShape = node as? Tile.TileShape {
-                let tile = tileShape.tile
-                
-                if tile.owner != nil { return false }
-                
-                tile.owner = self
-                tile.force = 3
-                tiles.append(tile)
-                
-                return true
-            }
-        }
-        
-        return false
-    }
-    
-    override func actionReinforcementPre() -> Bool {
-    
-        self.reinforcements = UInt(max(2, self.tiles.count / 3))
-        
-        for tile in self.tiles {
-            tile.shape.strokeColor = self.actionColor
-            tile.actionable = true
-        }
-    
-        return true
-    }
-    
-    override func actionReinforcementIn(nodes: [SKNode]) -> Bool {
-        
-        for node in nodes {
-            if let tileShape = node as? Tile.TileShape {
-                let tile = tileShape.tile
-                
-                if tile.owner === self {
-                    tile.force += 1
-                    self.reinforcements -= 1
-                }
-                
-                return reinforcements <= 0
-            }
-        }
-        
-        return false
-        
-    }
-    
-    override func actionMovePre() -> Bool {
-        
-        for tile in tiles {
-            tile.shape.strokeColor = actionColor
-            tile.actionable = true
-            for neighbourTile in tile.neighbours {
-                neighbourTile.shape.strokeColor = actionColor
-                neighbourTile.actionable = true
-            }
-        }
-        
-        return true
-    }
-    
-    override func actionMoveIn(nodes: [SKNode]) -> Bool {
-        
-        for node in nodes {
-            if let tileShape = node as? Tile.TileShape {
-                let tile = tileShape.tile
-                
-                if tile.actionable {
-                    
-                    if tile.owner === self {
-                        
-                        tile.force += 2
-                        
-                    } else if tile.owner == nil {
-                        
-                        var attackPower: UInt = 0
-                        
-                        for neighbourTile in tile.neighbours {
-                            if neighbourTile.owner === self {
-                                attackPower += neighbourTile.force / 2
-                            }
-                        }
-                        
-                        if attackPower <= 0 { return false }
-                        
-                        tile.owner = self
-                        tile.force = attackPower
-                        
-                        tiles.append(tile)
-                        
-                    } else if tile.owner !== self {
-                        
-                        var attackPower: UInt = 0
-                        
-                        for neighbourTile in tile.neighbours {
-                            if neighbourTile.owner === self {
-                                attackPower += neighbourTile.force / 2
-                                neighbourTile.force -= neighbourTile.force / 2
-                            }
-                        }
-                        
-                        let defensePower = tile.force
-                        
-                        let (leftAttackPower, leftDefensePower) = Battle.battle(attackPower, defense: defensePower)
-                        
-                        if leftAttackPower > 0 {
-                            
-                            let opponent: Player! = tile.owner
-                            
-                            let index = opponent.tiles.indexOf({$0 === tile})
-                            opponent.tiles.removeAtIndex(index!)
-                            
-                            tiles.append(tile)
-                            tile.owner = self
-                            tile.force = leftAttackPower
-                            
-                            if opponent.tiles.count == 0 {
-                                opponent.active = false
-                            }
-                            
-                        } else {
-                            tile.force = leftDefensePower
-                        }
-                        
-                    } else { return false }
-                    
-                    return true
-                }
-                
-                return false
-            }
-        }
-        
-        return false
-    }
-}
-
-class AI: Player {
-    
-    override func actionStartPre() -> Bool {
-        srandom(UInt32(time(nil)))
-        
-        var tile = game.board.tiles[random() % game.board.tiles.count]
-        
-        while tile.owner != nil {
-            tile = game.board.tiles[random() % game.board.tiles.count]
-        }
-        
-        tile.owner = self
-        tile.force = 3
-        tiles.append(tile)
-        
-        return true
-    }
-    
-    override func actionReinforcementPre() -> Bool {
-        reinforcements = UInt(max(3, tiles.count / 2))
-        
-        prepareInfoAboutTiles()
-        
-        srand48(time(nil))
-        srandom(UInt32(time(nil)))
-        
-        var tile: Tile
-        
-        while reinforcements > 0 {
-            if tilesAdjacentEnemies.count > 0 && (drand48() < 0.75 || tilesAdjacentNeutral.count == 0) {
-                tile = tilesAdjacentEnemies[random() % tilesAdjacentEnemies.count]
-            } else if tilesAdjacentNeutral.count > 0 {
-                tile = tilesAdjacentNeutral[random() % tilesAdjacentNeutral.count]
-            } else {
-                tile = tiles[random() % tiles.count]
-            }
-            
-            tile.force += 1
-            reinforcements -= 1
-        }
-        
-        return true
-        
-    }
-    
-    override func actionMovePre() -> Bool {
-        
-        srand48(time(nil))
-        srandom(UInt32(time(nil)))
-        
-        var tile: Tile
-        
-        if drand48() < 0.75 || actionableEnemyTiles.isEmpty {
-            
-            if !actionableEnemyTiles.isEmpty && (drand48() < 0.35 || actionableNeutralTiles.isEmpty) {
-                
-                actionableEnemyTiles = actionableEnemyTiles.sort({$0.force > $1.force})
-                
-                if drand48() < 0.5 {
-                    tile = actionableEnemyTiles.first!
-                } else {
-                    tile = actionableEnemyTiles[random() % actionableEnemyTiles.count]
-                }
-                
-            } else if !actionableNeutralTiles.isEmpty {
-                tile = actionableNeutralTiles[random() % actionableNeutralTiles.count]
-                
-            } else {
-                tile = tiles[random() % tiles.count]
-                
-            }
-            
-        } else {
-            if !tilesAdjacentEnemies.isEmpty {
-                tile = tilesAdjacentEnemies[random() % tilesAdjacentEnemies.count]
-                
-            } else if !tilesAdjacentNeutral.isEmpty {
-                tile = tilesAdjacentNeutral[random() % tilesAdjacentNeutral.count]
-                
-            } else {
-                tile = tiles[random() % tiles.count]
-            }
-            
-        }
-        
-        if tile.owner === self {
-            
-            tile.force += 3
-            
-        } else if tile.owner == nil {
-            
-            var attackPower:UInt = 0
-            
-            for neighbourTile in tile.neighbours {
-                if neighbourTile.owner === self {
-                    attackPower += neighbourTile.force / 2
-                }
-            }
-            
-            if attackPower <= 0 { return false }
-            
-            tile.owner = self
-            tile.force = attackPower
-            
-            tiles.append(tile)
-            
-        } else if tile.owner !== self {
-            
-            var attackPower: UInt = 0
-            
-            for neighbourTile in tile.neighbours {
-                if neighbourTile.owner === self {
-                    attackPower += neighbourTile.force / 2
-                    neighbourTile.force -= neighbourTile.force / 2
-                }
-            }
-            
-            let defensePower = tile.force
-            
-            let (leftAttackPower, leftDefensePower) = Battle.battle(attackPower, defense: defensePower)
-            
-            if leftAttackPower > 0 {
-                
-                let opponent: Player! = tile.owner
-                
-                let index = opponent.tiles.indexOf({$0 === tile})
-                opponent.tiles.removeAtIndex(index!)
-                
-                tiles.append(tile)
-                tile.owner = self
-                tile.force = leftAttackPower
-                
-                if opponent.tiles.count == 0 {
-                    opponent.active = false
-                }
-                
-            } else {
-                tile.force = leftDefensePower
-            }
-            
-        } else { return false }
-        
-        
-        return true
-    }
     
 }

@@ -8,8 +8,18 @@
 
 import Foundation
 
+
+/// Klasa do symulowania bitwy
 class Battle {
     
+    /**
+     Symulacja bitwy. Kończy się, gdy liczba atakujących lub obrońców spadnie do 0
+     
+     - parameter attack:  Ilość atakujących
+     - parameter defense: Ilość obrońców
+     
+     - returns: Para zawierająca liczbę pozostałych atakujących i obrońców
+     */
     static func battle(attack: UInt, defense: UInt) -> (leftAttack: UInt, leftDefense: UInt) {
         
         srandom(UInt32(time(nil)))

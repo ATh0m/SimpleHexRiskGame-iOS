@@ -1,0 +1,15 @@
+version: "Apple Swift version 2.2 (swiftlang-703.0.18.8 clang-703.0.31)"
+options: "a09a8726a2fc40bcc19246926730e188"
+build_time: [518986025, 814624000]
+inputs:
+  "/Users/tomasznanowski/OneDrive/Studia UWr Informatyka/[PO] Programowanie obiektowe/[PO] Projekt/SimpleHexRiskGame-iOS/src/SimpleHexRiskGame-iOS/GameScene.swift": [518961338, 0]
+  "/Users/tomasznanowski/OneDrive/Studia UWr Informatyka/[PO] Programowanie obiektowe/[PO] Projekt/SimpleHexRiskGame-iOS/src/SimpleHexRiskGame-iOS/GameViewController.swift": [518961391, 0]
+  "/Users/tomasznanowski/OneDrive/Studia UWr Informatyka/[PO] Programowanie obiektowe/[PO] Projekt/SimpleHexRiskGame-iOS/src/SimpleHexRiskGame-iOS/Board.swift": [518961253, 0]
+  "/Users/tomasznanowski/OneDrive/Studia UWr Informatyka/[PO] Programowanie obiektowe/[PO] Projekt/SimpleHexRiskGame-iOS/src/SimpleHexRiskGame-iOS/Human.swift": [518960941, 0]
+  "/Users/tomasznanowski/OneDrive/Studia UWr Informatyka/[PO] Programowanie obiektowe/[PO] Projekt/SimpleHexRiskGame-iOS/src/SimpleHexRiskGame-iOS/AI.swift": [518960877, 0]
+  "/Users/tomasznanowski/OneDrive/Studia UWr Informatyka/[PO] Programowanie obiektowe/[PO] Projekt/SimpleHexRiskGame-iOS/src/SimpleHexRiskGame-iOS/Battle.swift": [518959252, 0]
+  "/Users/tomasznanowski/OneDrive/Studia UWr Informatyka/[PO] Programowanie obiektowe/[PO] Projekt/SimpleHexRiskGame-iOS/src/SimpleHexRiskGame-iOS/Tile.swift": [518960690, 0]
+  "/Users/tomasznanowski/OneDrive/Studia UWr Informatyka/[PO] Programowanie obiektowe/[PO] Projekt/SimpleHexRiskGame-iOS/src/SimpleHexRiskGame-iOS/Player.swift": [518960840, 0]
+  "/Users/tomasznanowski/OneDrive/Studia UWr Informatyka/[PO] Programowanie obiektowe/[PO] Projekt/SimpleHexRiskGame-iOS/src/SimpleHexRiskGame-iOS/AppDelegate.swift": [518961419, 0]
+  "/Users/tomasznanowski/OneDrive/Studia UWr Informatyka/[PO] Programowanie obiektowe/[PO] Projekt/SimpleHexRiskGame-iOS/src/SimpleHexRiskGame-iOS/Gameplay.swift": [518959948, 0]
+  "/Users/tomasznanowski/OneDrive/Studia UWr Informatyka/[PO] Programowanie obiektowe/[PO] Projekt/SimpleHexRiskGame-iOS/src/SimpleHexRiskGame-iOS/Helper.swift": [518958531, 0]

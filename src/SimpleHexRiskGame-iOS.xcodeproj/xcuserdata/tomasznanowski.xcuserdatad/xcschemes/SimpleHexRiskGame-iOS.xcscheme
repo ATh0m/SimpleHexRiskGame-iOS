@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9FA743491CF89DD800C773A2"
-               BuildableName = "SimpleHexRiskGame-iOS.app"
+               BuildableName = "HEXRisk.app"
                BlueprintName = "SimpleHexRiskGame-iOS"
                ReferencedContainer = "container:SimpleHexRiskGame-iOS.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9FA743491CF89DD800C773A2"
-            BuildableName = "SimpleHexRiskGame-iOS.app"
+            BuildableName = "HEXRisk.app"
             BlueprintName = "SimpleHexRiskGame-iOS"
             ReferencedContainer = "container:SimpleHexRiskGame-iOS.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9FA743491CF89DD800C773A2"
-            BuildableName = "SimpleHexRiskGame-iOS.app"
+            BuildableName = "HEXRisk.app"
             BlueprintName = "SimpleHexRiskGame-iOS"
             ReferencedContainer = "container:SimpleHexRiskGame-iOS.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9FA743491CF89DD800C773A2"
-            BuildableName = "SimpleHexRiskGame-iOS.app"
+            BuildableName = "HEXRisk.app"
             BlueprintName = "SimpleHexRiskGame-iOS"
             ReferencedContainer = "container:SimpleHexRiskGame-iOS.xcodeproj">
          </BuildableReference>
