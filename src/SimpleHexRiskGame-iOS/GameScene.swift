@@ -8,16 +8,27 @@
 
 import SpriteKit
 
+/// Klasa do wyświetlania rozgrywki i reagowania na akcje graczy
 class GameScene: SKScene {
     
+    /// Dostęp do całej rozgrywki
     var game: Gameplay!
     
+    /// Etykieta do wyświetlania wiadomości na ekranie
     var message: SKLabelNode!
+    /// Etykieta do wyświetlania dodatkowych wiadomości na ekranie
     var messageDescription: SKLabelNode!
     
+    /// Etykieta do wyświetlania zwycięzcy na ekranie
     var winMessage: SKLabelNode!
+    ///
     var winMessageBox: SKShapeNode!
     
+    /**
+     Wywoływana zaraz po wyświetleniu sceny przez widok
+     
+     - parameter view: Widok, gdzie prezentowana jest scena
+     */
     override func didMoveToView(view: SKView) {
         
         backgroundColor = SKColor.blackColor()
@@ -25,6 +36,9 @@ class GameScene: SKScene {
         
     }
     
+    /**
+     Informuje, gdy jedne lub więcej palców dotyka ekran
+     */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         let player: Player! = game.players.isEmpty ? nil : game.players[game.currentPlayerIndex]
@@ -80,6 +94,9 @@ class GameScene: SKScene {
         }
     }
    
+    /**
+     Wywoływana przed wyświetleniem każdej klatki
+     */
     override func update(currentTime: CFTimeInterval) {
         
         let player: Player! = game.players.isEmpty ? nil : game.players[game.currentPlayerIndex]

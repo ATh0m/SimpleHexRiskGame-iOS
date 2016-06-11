@@ -9,24 +9,68 @@
 import Foundation
 import SpriteKit
 
+/// Klasa do zarządzania całą rozgrywką
 class Gameplay {
     
+    /// Dostęp do planszy
     var board: Board!
+    /// Dostęp do widoku gry
     var gameScene: GameScene!
     
+    /// Lista graczy
     var players: [Player] = [Player]()
+    /// Indeks obecnego gracza w liście graczy
     var currentPlayerIndex: Int = 0
     
+    /// Obecny stan gry
     var state: State = .Undefined
     
+    /**
+     Stany gry
+     
+     - Create:        Wyświetlenie ekranu startowego i tworzenie nowej rozgrywki
+     - Start:         Tura, kiedy gracze wybierają ich startowe pola
+     - Reinforcement: Tura, kiedy gracze wzmacniają swoje pola
+     - Move:          Tura, kiedy gracze mogą zaatakować inne pole lub wzmocnić swoje
+     - Win:           Koniec gry i wyświetlenie zwycięzcy
+     - Undefined:     Niezdefiniowany stan
+     
+     - Condition:     Podział stanu na 3 części (Pre, In, Post)
+     */
     enum State {
-        case Create(Condition), Start(Condition), Reinforcement(Condition), Move(Condition), Win(Condition), Undefined
+        /** Wyświetlenie ekranu startowego i tworzenie nowej rozgrywki */
+        case Create(Condition)
+        /** Tura, kiedy gracze wybierają ich startowe pola */
+        case Start(Condition)
+        /** Tura, kiedy gracze wzmacniają swoje pola */
+        case Reinforcement(Condition)
+        /** Tura, kiedy gracze mogą zaatakować inne pole lub wzmocnić swoje */
+        case Move(Condition)
+        /** Koniec gry i wyświetlenie zwycięzcy*/
+        case Win(Condition)
+        /** Niezdefiniowany stan */
+        case Undefined
         
+        /**
+         Podział stanu na 3 części (Pre, In, Post)
+         
+         - Pre:  W tej części wykonywane są akcje przed stanem
+         - In:   W tej części wykonywane są akcje w trakcie stanu
+         - Post: W tej części wykonywane są akcje po stanie
+         */
         enum Condition {
-            case Pre, In, Post
+            /** W tej części wykonywane są akcje przed stanem */
+            case Pre
+            /** W tej części wykonywane są akcje w trakcie stanu */
+            case In
+            /** W tej części wykonywane są akcje po stanie */
+            case Post
         }
     }
     
+    /**
+     Tworzenie nowej rozgrywki
+     */
     init(gameScene: GameScene) {
         self.gameScene = gameScene
         
@@ -34,18 +78,21 @@ class Gameplay {
         state = .Create(.Pre)
     }
     
+    /**
+     Akcja do wykonania przed stanem Create
+     */
     func actionCreatePre() -> Bool {
         
         let center = CGPoint(x: gameScene.size.width / 2, y: gameScene.size.height / 2)
         
-        let labelsConfig: [(String, CGVector, CGFloat, String)] = [ ("SimpleHexRiskGame".uppercaseString, CGVector(dx: 0, dy: 130), 20, ""),
-                                                                    ("Jest to prosta gra strategiczna na podstawie gry Ryzyko. Twoim celem jest wyeliminowanie przeciwnych graczy.", CGVector(dx: 0, dy: 70), 12, ""),
-                                                                    ("Przejmuj neutralne i wrogie tereny, aby powiększać swoje wojska", CGVector(dx: 0, dy: 50), 12, ""),
-                                                                    ("Po przejęciu pustego pola, jego wartość będzie równa średniej wartości sąsiadów", CGVector(dx: 0, dy: 30), 12, ""),
-                                                                    ("Kiedy atakujesz worgie pole siła ataku wynosi połowę siły sąsiadujących przyjaciół", CGVector(dx: 0, dy: 10), 12, ""),
-                                                                    ("Mapa i kolejność rozgrywki jest losowa", CGVector(dx: 0, dy: -10), 12, ""),
-                                                                    ("Wybierz liczbę graczy, którzy wezmą udział w potyczce.", CGVector(dx: 0, dy: -50), 12, ""),
-                                                                    ("Nad resztą kontrolę przejmie komputer. Powodzenia!", CGVector(dx: 0, dy: -70), 12, "")]
+        let labelsConfig: [(String, CGVector, CGFloat)] = [ ("SimpleHexRiskGame".uppercaseString, CGVector(dx: 0, dy: 130), 20),
+                                                            ("Jest to prosta gra strategiczna na podstawie gry Ryzyko. Twoim celem jest wyeliminowanie przeciwnych graczy.", CGVector(dx: 0, dy: 70), 12),
+                                                            ("Przejmuj neutralne i wrogie tereny, aby powiększać swoje wojska", CGVector(dx: 0, dy: 50), 12),
+                                                            ("Po przejęciu pustego pola, jego wartość będzie równa średniej wartości sąsiadów", CGVector(dx: 0, dy: 30), 12),
+                                                            ("Kiedy atakujesz worgie pole siła ataku wynosi połowę siły sąsiadujących przyjaciół", CGVector(dx: 0, dy: 10), 12),
+                                                            ("Mapa i kolejność rozgrywki jest losowa", CGVector(dx: 0, dy: -10), 12),
+                                                            ("Wybierz liczbę graczy, którzy wezmą udział w potyczce.", CGVector(dx: 0, dy: -50), 12),
+                                                            ("Nad resztą kontrolę przejmie komputer. Powodzenia!", CGVector(dx: 0, dy: -70), 12)]
         
         let choicesConfig: [(String, CGVector, CGFloat, String)] = [ ("0", CGVector(dx: -150, dy: -130), 20, "0"),
                                                                      ("1", CGVector(dx: -75, dy: -130), 20, "1"),
@@ -55,11 +102,10 @@ class Gameplay {
         
         var labels: [SKLabelNode] = [SKLabelNode]()
         
-        for (text, translation, fontSize, name) in labelsConfig {
+        for (text, translation, fontSize) in labelsConfig {
             let label = SKLabelNode(fontNamed: "Helvetica Neue")
             label.fontColor = SKColor(red: 128/255.0, green: 128/255.0, blue: 128/255.0, alpha: 1)
             
-            label.name = name
             label.text = text
             label.fontSize = fontSize
             label.position = center + translation
@@ -97,6 +143,9 @@ class Gameplay {
         return true
     }
     
+    /**
+     Akcja do wykonania w trakcie stanu Create
+     */
     func actionCreateIn(nodes: [SKNode]) -> Bool {
         
         for node in nodes {
@@ -141,6 +190,9 @@ class Gameplay {
         return false
     }
     
+    /**
+     Akcja do wykonania po stanie Create
+     */
     func actionCreatePost() -> Bool {
         gameScene.removeAllChildren()
         
@@ -189,6 +241,9 @@ class Gameplay {
         return true
     }
     
+    /**
+     Akcja do wykonania przed stanem Create
+     */
     func actionStartPre() -> Bool {
         
         let player = players[currentPlayerIndex]
@@ -207,10 +262,16 @@ class Gameplay {
         return true
     }
     
+    /**
+     Akcja do wykonania w trakcie stanu Start
+     */
     func actionStartIn() -> Bool {
         return true
     }
     
+    /**
+     Akcja do wykonania po stanie Start
+     */
     func actionStartPost() -> Bool {
         for tile in board.tiles {
             tile.shape.strokeColor = SKColor.clearColor()
@@ -222,6 +283,9 @@ class Gameplay {
         return true
     }
     
+    /**
+     Akcja do wykonania przed stanem Reinforcement
+     */
     func actionReinforcementPre() -> Bool {
         
         let player = players[currentPlayerIndex]
@@ -234,6 +298,9 @@ class Gameplay {
         
     }
     
+    /**
+     Akcja do wykonania w trakcie stanu Reinforcement
+     */
     func actionReinforcementIn() -> Bool {
         
         let player = players[currentPlayerIndex]
@@ -244,6 +311,9 @@ class Gameplay {
         
     }
     
+    /**
+     Akcja do wykonania po stanie Reinforcement
+     */
     func actionReinforcementPost() -> Bool {
         
         let player = players[currentPlayerIndex]
@@ -257,6 +327,9 @@ class Gameplay {
     
     }
     
+    /**
+     Akcja do wykonania przed stanem Move
+     */
     func actionMovePre() -> Bool {
     
         let player = players[currentPlayerIndex]
@@ -269,10 +342,16 @@ class Gameplay {
         return true
     }
     
+    /**
+     Akcja do wykonania w trakcie stanu Move
+     */
     func actionMoveIn() -> Bool {
         return true
     }
     
+    /**
+     Akcja do wykonania po stanie Move
+     */
     func actionMovePost() -> Bool {
     
         let player = players[currentPlayerIndex]
@@ -294,6 +373,9 @@ class Gameplay {
     
     }
     
+    /**
+     Akcja do wykonania przed stanem Win
+     */
     func actionWinPre() -> Bool {
         
         if let index = players.indexOf({$0.active}) {
@@ -309,6 +391,9 @@ class Gameplay {
         return false
     }
     
+    /**
+     Akcja do wykonania po stanie Win
+     */
     func actionWinPost() -> Bool {
         
         gameScene.removeAllChildren()

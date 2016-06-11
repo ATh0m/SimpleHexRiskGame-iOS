@@ -9,14 +9,23 @@
 import Foundation
 import SpriteKit
 
-
+/// Klasa do zarządzania planszą rozgrywki
 class Board {
     
+    /// Lista wszystkich pól wchodzących w skład planszy
     var tiles: [Tile] = [Tile]()
+    /// Ilość wszystkich pól
     var tilesAmount: UInt = 0
     
+    /// Rozmiar planszy
     var size: CGSize = CGSizeZero
     
+    /**
+     Tworzenie nowej planszy
+     
+     - parameter minTilesAmount: Minimalna liczba pól w planszy
+     - parameter maxTilesAmount: Maksymalna liczba pól w planszy
+     */
     init(minTilesAmount: UInt, maxTilesAmount: UInt) {
         
         let tilesAmount = minTilesAmount + UInt(arc4random()) % (maxTilesAmount - minTilesAmount)
@@ -31,6 +40,16 @@ class Board {
         }
     }
     
+    /**
+     Generowanie nowej planszy
+     
+     - parameter tilesAmount:    Ilość pól do wygenerowania
+     - parameter tileDirections: Lista możliwych kierunków do poruszania się
+     - parameter probability:    Szansa na wybranie danego kierunku
+     - parameter maxSize:        Maksymalny rozmiar planszy
+     
+     - returns: Para zawierająca współrzędne lewgo dolnego i górnego prawego punktu planszy (Służą do poznania faktycznego rozmiaru planszy)
+     */
     func generate(tilesAmount: UInt, tileDirections: [CGVector], probability: CGFloat, maxSize: CGSize) -> (minPoint: CGPoint, maxPoint: CGPoint) {
         
         srand(UInt32(time(nil)))

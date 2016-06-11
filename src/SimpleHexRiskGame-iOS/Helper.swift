@@ -10,14 +10,14 @@ import Foundation
 import SpriteKit
 
 /**
- * Adds a CGVector to this CGPoint and returns the result as a new CGPoint.
+ * Dodanie CGVector do CGPoint i zwrócenie wyniku jako nowy CGPoint
  */
 public func + (left: CGPoint, right: CGVector) -> CGPoint {
     return CGPoint(x: left.x + right.dx, y: left.y + right.dy)
 }
 
 /**
- * Increments a CGPoint with the value of a CGVector.
+ * Zwiększenie wartości CGPoint o CGVector
  */
 public func += (inout left: CGPoint, right: CGVector) {
     left = left + right
